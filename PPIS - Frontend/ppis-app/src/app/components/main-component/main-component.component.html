@@ -1,0 +1,120 @@
+<h1>Kreiranje problema</h1>
+<div class="group-box">
+  <div class="row">
+    <div class="col-sm-1"><h4>Status:</h4></div>
+      <div class="col-sm-10"><div class="input-group">
+        <input [(ngModel)]="selectedStatus" type="text" class="form-control" placeholder="{{ selectedstatus }}" readonly>
+        <div class="input-drop input-group-btn">
+          <div class="dropdown" appDropdownDirective>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let status of statusList" name="status" (click)="selectStatus(status)"><a href="#">{{ status }}</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+
+  <div class="row">
+    <div class="col-sm-1"><h4>Prioritet:</h4></div>
+      <div class="col-sm-10"><div class="input-group">
+        <input [(ngModel)]="selectedPriority" type="text" class="form-control" placeholder="{{ selectedPriority }}" readonly>
+        <div class="input-drop input-group-btn">
+          <div class="dropdown" appDropdownDirective>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let priority of priorityList" (click)="selectPriority(priority)"><a href="#">{{ priority }}</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>
+
+<div class="group-box">
+  <p>Klasifikacija problema</p>
+  <div class="row">
+    <div class="col-sm-1"><h4>Kategorija:</h4></div>
+      <div class="col-sm-10"><div class="input-group">
+        <input [(ngModel)]="selectedCategory" type="text" class="form-control" placeholder="{{ selectedCategory }}" readonly>
+        <div class="input-drop input-group-btn">
+          <div class="dropdown" appDropdownDirective>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let category of categoryList" (click)="selectCategory(category)"><a href="#">{{ category }}</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>
+
+<div class="group-box">
+  <p>Dodjela problema</p>
+  <div class="row">
+    <div class="col-sm-1"><h4>Grupa:</h4></div>
+      <div class="col-sm-10"><div class="input-group">
+        <input [(ngModel)]="selectedGroup.name" type="text" class="form-control" placeholder="{{ selectedGroup.name }}" readonly>
+        <div class="input-drop input-group-btn">
+          <div class="dropdown" appDropdownDirective>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let group of groupList" (click)="selectGroup(group)"><a href="#">{{ group.name }}</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-1"><h4>Predstavnik:</h4></div>
+      <div class="col-sm-10"><div class="input-group">
+        <input [(ngModel)]="selectedGroup.teamLead" type="text" class="form-control" placeholder="{{ selectedGroup.teamLead }}" readonly>
+        <div class="input-drop input-group-btn">
+          <div class="dropdown" appDropdownDirective>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li *ngFor="let group of selectedGroup.members" (click)="selectTeamLead(group)"><a href="#">{{ group }}</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>
+
+<div class="group-box">
+  <div class="row">
+    <div class="col-sm-1"><h4>Problem:</h4></div>
+      <div class="col-sm-10"><div class="input-group">
+        <textarea [(ngModel)]="problem" type="text" class="form-control" placeholder="{{ problem }}" cols="38"></textarea>
+      </div>
+    </div>  
+  </div>
+</div>
+
+<div class="group-box">
+  <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link active" href="#" (click)="changeTab(0)"><h3>Dokumentacija</h3></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="changeTab(1)"><h3>Aktivnosti</h3></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="changeTab(2)"><h3>Historija</h3></a>
+      </li>
+  </ul>
+</div>
+
+<app-documentation *ngIf="selectedTab == 0" ></app-documentation>
+<app-activity *ngIf="selectedTab == 1" ></app-activity>
