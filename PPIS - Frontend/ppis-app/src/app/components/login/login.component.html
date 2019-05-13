@@ -1,0 +1,49 @@
+<div class="container-fluid" appRemoveHost>
+    <div class="row login-row-1">
+      <div class="col-sm-8 h-100">
+          <form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()">
+              <div class="text-center">
+                  <h1 class="header">MOBILE9/M9</h1>
+              </div>
+              <div class="text-center">
+                <div class="form-group text-center">
+                    <input type="text" class="form-control my-input" formControlName="username" placeholder="Username" [ngClass]="{'is-invalid' : submitted && con.username.errors}"> 
+                    <div *ngIf="submitted && con.username.errors" class="invalid-feedback">
+                        <div *ngIf="con.username.errors.required">Username is required.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control my-input" formControlName="password" placeholder="Password" [ngClass]="{'is-invalid': submitted && con.password.errors}">
+                    <div *ngIf="submitted && con.password.errors" class="invalid-feedback">
+                        <div *ngIf="con.password.errors.required">Password is required.</div>
+                    </div>
+                </div>
+                <div class="form-group text-center">
+                    <button class="my-button mb-3">Login</button>
+                </div>
+            </div>
+          </form>
+      </div>
+      <div class="col-sm-4">
+      </div>
+    </div>
+    <div class="row login-row-2">
+       <div class="col-sm-1"></div>
+       <div class="col-sm-10 mt-3">
+         <p class="text-justify">
+            MobileNine ili skraćeno M9 je kompanija koja svojim klijentima pruža telekomunikacijske usluge putem mobilnih uređaja. 
+            M9 je vodeći provajder digitalnih usluga i komunikacionih rješenja u širem regionu, sa preko 20 miliona korisnika u 9 zemalja:
+             Bosni i Hercegovini, Hrvatskoj, Sloveniji, Srbiji, Crnoj Gori, Sjevernoj Makedoniji, Albaniji, Kosovu i Rumuniji. U svakoj od
+              navedenih država pružaju se jednako dobre i kvalitetne usluge. M9 kompanija je jedna od najmodernijih infrastruktura koja nudi 
+              digitalni životni stil i omogućava korisnicima da se povežu bilo kada i bilo gdje. Zajednički cilj, strategija i korporativna 
+              kultura su usklađeni sa glavnim motivom: osnaživanje digitalnog života. Osnovni procesi komapnije su pružanje telekomunikacijskih 
+              usluga u vidu omogućavanja uspostave poziva, slanja poruka te korištenje mobilnog interneta, po zavidnoj brzini i kvaliteti, 
+              čime se kompanija obavezala da će kontinualno testirati svoje usluge. Pored ovoga, u cilju postizanja zadovoljstva i povjerenja 
+              korisnika, kompanija dodatne napore ulaže u popravljanje i otklanjanje svih mogućih smetnji i kvarova u što bržem vremenskom periodu.
+
+         </p>
+        
+       </div>
+       <div class="col-sm-1"></div>
+    </div>
+</div>

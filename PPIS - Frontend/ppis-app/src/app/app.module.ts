@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
 
 import { AppComponent } from './app.component';
 import { MainComponentComponent } from './components/main-component/main-component.component';
@@ -8,6 +9,11 @@ import { DropdownDirectiveDirective } from './directives/dropdown-directive.dire
 import { DocumentationComponent } from './components/documentation/documentation.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { ChangeManagementComponent } from './components/change-management/change-management.component';
+import { LoginComponent } from './components/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RemoveHost } from './directives/remove-host.directive';
+import { ClienthomeComponent } from './components/clients/clienthome/clienthome.component';
+import { ClientrequestComponent } from './components/clients/clientrequest/clientrequest.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +22,17 @@ import { ChangeManagementComponent } from './components/change-management/change
     DropdownDirectiveDirective,
     DocumentationComponent,
     ActivityComponent,
-    ChangeManagementComponent
+    ChangeManagementComponent,
+    LoginComponent,
+    RemoveHost,
+    ClienthomeComponent,
+    ClientrequestComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,                        
-    ReactiveFormsModule
+    ReactiveFormsModule, AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

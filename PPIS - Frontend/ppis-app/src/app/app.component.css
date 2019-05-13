@@ -1,3 +1,7 @@
 .main-component{
     margin-left: 10%;
 }
+
+app-login {
+    height: 100%;
+}

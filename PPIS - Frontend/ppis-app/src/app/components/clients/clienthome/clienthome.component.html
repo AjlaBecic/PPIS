@@ -1,0 +1,47 @@
+<div class="container-fluid main-background">
+  <div class="row h-100">
+    <div class="col-sm-2 h-100">
+      <div class="my-div">
+        <ul class="p-0 m-0"> 
+          <li>
+            <ul class="p-0">
+              <li class="li-header text-left">Welcome</li>
+              <li>
+                <a>Who are we?</a>
+                <a>What do we offer?</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <ul class="p-0">
+              <li class="li-header text-left">Requests</li>
+              <li>
+                <a routerLink="/client/request">New request</a>
+              </li>
+            </ul>
+          </li>
+          <li class="line mt-1">
+            <a (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="col-sm-2 h-100">
+      <div class="my-div">
+          <ul class="p-0">
+              <li class="li-header text-left">First name:</li>
+              <li class="ml-1">{{currentUser.firstName}}</li>
+              <li class="li-header text-left">Last name:</li>
+              <li class="ml-1">{{currentUser.lastName}}</li>
+              <li class="li-header text-left">Email:</li>
+              <li class="ml-1">{{currentUser.mail}}</li>
+              <li class="li-header text-left">Username:</li>
+              <li class="ml-1">{{currentUser.userName}}</li>
+            </ul>
+      </div>
+    </div>
+  </div>
+</div>
