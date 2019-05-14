@@ -41,6 +41,8 @@ export class LoginComponent implements OnInit {
       if (data.statusCode == 200) {
         if (data.data.role === 'client')
           this.router.navigate(['/client']);
+        else if (data.data.role === 'admin')
+          this.router.navigate(['/admin']);
       } 
     })    
   }

@@ -9,8 +9,32 @@ const ProblemController = (() => {
             res.end(JSON.stringify(data));
         });
     };
+
+    const markAsProblem = (req, res) => {
+        var problemId = req.body.problemId;
+        Problem.markAsProblem(problemId, function(success, data) {
+            res.end(JSON.stringify(data));
+        })
+    };
+
+    const getAll = (req, res) => {
+        Problem.getAll(function(success, data) {
+            res.end(JSON.stringify(data));
+        });
+    };
+
+    const getProblem = (req, res) => {
+        var id = req.query.id;
+        Problem.getProblem(id, function(success, data) {
+            res.end(JSON.stringify(data));
+        })
+    }
+
     return {
-        newProblem : newProblem
+        newProblem : newProblem,
+        markAsProblem : markAsProblem,
+        getAll : getAll,
+        getProblem : getProblem
     }
 })();
 

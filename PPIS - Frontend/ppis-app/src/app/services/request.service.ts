@@ -20,4 +20,25 @@ export class RequestService {
       return response;
     }));
   }
+
+  getRequestes() {
+    return this.http.get<any>(`${config.api.url}/problem/all`)
+    .pipe(map(response => {
+      return response;
+    }));
+  }
+
+  getRequest(id) {
+    return this.http.get<any>(`${config.api.url}/problem`, {params : {'id' : id}})
+    .pipe(map(response => {
+      return response;
+    }));
+  }
+
+  markAsProblem(id) {
+    return this.http.put<any>(`${config.api.url}/problem/markProblem`, {'problemId' : id})
+    .pipe(map(response => {
+      return response;
+    }));
+  }
 }

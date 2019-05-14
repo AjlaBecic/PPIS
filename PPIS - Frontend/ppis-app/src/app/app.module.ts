@@ -14,6 +14,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { RemoveHost } from './directives/remove-host.directive';
 import { ClienthomeComponent } from './components/clients/clienthome/clienthome.component';
 import { ClientrequestComponent } from './components/clients/clientrequest/clientrequest.component';
+import { AdminhomeComponent } from './components/admins/adminhome/adminhome.component';
+import { AdminrequestsComponent } from './components/admins/adminrequests/adminrequests.component';
+import { AdminnewproblemComponent } from './components/admins/adminnewproblem/adminnewproblem.component';
+import { AdminrequestComponent } from './components/admins/adminrequest/adminrequest.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { ClientrequestComponent } from './components/clients/clientrequest/clien
     LoginComponent,
     RemoveHost,
     ClienthomeComponent,
-    ClientrequestComponent
+    ClientrequestComponent,
+    AdminhomeComponent,
+    AdminrequestsComponent,
+    AdminnewproblemComponent,
+    AdminrequestComponent
   ],
   imports: [
     BrowserModule,
