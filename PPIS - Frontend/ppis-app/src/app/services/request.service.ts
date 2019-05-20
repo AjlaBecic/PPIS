@@ -22,14 +22,14 @@ export class RequestService {
   }
 
   getRequestes() {
-    return this.http.get<any>(`${config.api.url}/problem/all`)
+    return this.http.get<any>(`${config.api.url}/problem/allRequests`)
     .pipe(map(response => {
       return response;
     }));
   }
 
   getRequest(id) {
-    return this.http.get<any>(`${config.api.url}/problem`, {params : {'id' : id}})
+    return this.http.get<any>(`${config.api.url}/problem/request`, {params : {'id' : id}})
     .pipe(map(response => {
       return response;
     }));
@@ -37,6 +37,27 @@ export class RequestService {
 
   markAsProblem(id) {
     return this.http.put<any>(`${config.api.url}/problem/markProblem`, {'problemId' : id})
+    .pipe(map(response => {
+      return response;
+    }));
+  }
+
+  getNewProblems() {
+    return this.http.get<any>(`${config.api.url}/problem/new`)
+    .pipe(map(response => {
+      return response;
+    }));
+  }
+
+  getAllProblems() {
+    return this.http.get<any>(`${config.api.url}/problem/all`)
+    .pipe(map(response => {
+      return response;
+    }));
+  }
+
+  getProblem(id) {
+    return this.http.get<any>(`${config.api.url}/problem`, {params : {'id' : id}})
     .pipe(map(response => {
       return response;
     }));

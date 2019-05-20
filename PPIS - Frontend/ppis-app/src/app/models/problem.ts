@@ -1,4 +1,5 @@
 import { User } from './user';
+import { Status } from './status';
 
 export class Problem {
     constructor(
@@ -7,6 +8,7 @@ export class Problem {
         public description : string,
         public consequences : string,
         public user : User,
+        public status : Status,
         public isProblem : boolean
     ){}
 }

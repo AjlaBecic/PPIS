@@ -9,6 +9,9 @@ import { AdminhomeComponent } from './components/admins/adminhome/adminhome.comp
 import { AdminrequestsComponent } from './components/admins/adminrequests/adminrequests.component';
 import { AdminrequestComponent } from './components/admins/adminrequest/adminrequest.component';
 import { AdminnewproblemComponent } from './components/admins/adminnewproblem/adminnewproblem.component';
+import { ManagerhomeComponent } from './components/manager/managerhome/managerhome.component';
+import { ManagerproblemsComponent } from './components/manager/managerproblems/managerproblems.component';
+import { ManagerproblemComponent } from './components/manager/managerproblem/managerproblem.component';
 
 const routes : Routes = [
   {path : 'login', component : LoginComponent},
@@ -22,6 +25,12 @@ const routes : Routes = [
       {path : 'requests', component : AdminrequestsComponent},
       {path : 'request/:id', component : AdminrequestComponent},
       {path : 'problem', component : AdminnewproblemComponent}
+    ]
+  },
+  { path : 'manager', component : ManagerhomeComponent,
+    children : [
+      {path : 'problems/:filter', component : ManagerproblemsComponent},
+      {path : 'problem/:id', component : ManagerproblemComponent}
     ]
   }
 ];

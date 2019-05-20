@@ -7,7 +7,10 @@ const Problem = db.define('problem', {
     title : Sequelize.STRING,
     description : Sequelize.STRING,
     consequences : Sequelize.STRING,
-    isProblem : Sequelize.BOOLEAN
+    priority : Sequelize.STRING,
+    status : Sequelize.STRING,
+    isProblem : Sequelize.BOOLEAN,
+    processed : Sequelize.BOOLEAN
 });
 
 Problem.newProblem = function(problem, fn) {
@@ -15,8 +18,11 @@ Problem.newProblem = function(problem, fn) {
         title : problem.title,
         description : problem.description,
         consequences : problem.consequences,
+        priority : '',
+        status : '',
         userId : problem.user.id,
-        isProblem : problem.isProblem
+        isProblem : problem.isProblem,
+        processed : false
     })
     .then(problem => {
         return fn('yes', Responses.OK(problem));

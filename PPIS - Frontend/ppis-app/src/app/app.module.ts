@@ -18,6 +18,9 @@ import { AdminhomeComponent } from './components/admins/adminhome/adminhome.comp
 import { AdminrequestsComponent } from './components/admins/adminrequests/adminrequests.component';
 import { AdminnewproblemComponent } from './components/admins/adminnewproblem/adminnewproblem.component';
 import { AdminrequestComponent } from './components/admins/adminrequest/adminrequest.component';
+import { ManagerproblemsComponent } from './components/manager/managerproblems/managerproblems.component';
+import { ManagerhomeComponent } from './components/manager/managerhome/managerhome.component';
+import { ManagerproblemComponent } from './components/manager/managerproblem/managerproblem.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { AdminrequestComponent } from './components/admins/adminrequest/adminreq
     AdminhomeComponent,
     AdminrequestsComponent,
     AdminnewproblemComponent,
-    AdminrequestComponent
+    AdminrequestComponent,
+    ManagerproblemsComponent,
+    ManagerhomeComponent,
+    ManagerproblemComponent
   ],
   imports: [
     BrowserModule,

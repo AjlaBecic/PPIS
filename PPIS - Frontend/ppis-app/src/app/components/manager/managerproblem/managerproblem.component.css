@@ -1,0 +1,24 @@
+.input-drop{
+    width: 11%;
+}
+
+
+h1, .row, p{
+    margin-left: 5%
+}
+
+.main-div {
+    height: 94%;
+    background: #ffffff;
+    opacity: 0.9;
+    border-radius: 12px;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    overflow: scroll;
+    display: block;
+}
+
+
+.my-header {
+    color: blue;
+}
