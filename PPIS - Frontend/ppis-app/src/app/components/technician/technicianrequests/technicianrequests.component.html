@@ -1,0 +1,19 @@
+<div class="main-div">
+  <div class="m-2">
+    <h3 *ngIf="filter === 'all'" class="header">All problems</h3>
+    <h3 *ngIf="filter === 'new'" class="header">New problems</h3>
+  </div>
+  <div class="w-100" *ngFor="let problem of problems">
+    <div class="container-fluid problem-div">
+      <div class="row ml-2">
+        <h4>{{problem.title}}</h4>
+      </div>
+      <div class="row ml-3">
+        <p>Author: {{problem.user.userName}}</p>
+      </div>
+      <div class="row text-center">
+        <button routerLink="/technician/request/{{problem.id}}" class="my-button m-2">Open problem</button>
+      </div>
+    </div>
+  </div>
+</div>

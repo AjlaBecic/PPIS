@@ -4,6 +4,13 @@ const ProblemController = require('./problem.controller');
 
 ProblemRouter.post('/', ProblemController.newProblem);
 ProblemRouter.put('/markProblem', ProblemController.markAsProblem);
+
+ProblemRouter.put('/closed', ProblemController.closed);
+ProblemRouter.put('/done', ProblemController.done);
+ProblemRouter.put('/progress', ProblemController.progress);
+
+ProblemRouter.put('/dodijeliTehnicaru', ProblemController.dodijeliTehnicaru);
+ProblemRouter.get('/tech', ProblemController.getProblemsTech);
 ProblemRouter.get('/allRequests', ProblemController.getAllRequests);
 ProblemRouter.get('/request', ProblemController.getRequest);
 ProblemRouter.get('/all', ProblemController.getProcessedProblems);

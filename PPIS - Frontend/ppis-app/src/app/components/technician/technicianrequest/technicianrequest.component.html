@@ -1,0 +1,24 @@
+<div class="main-div">
+  <div class="container-flud ml-5">
+    <div class="row">
+      <h3 class="header ml-3">{{problem.title}}</h3>
+    </div>
+    <div class="row">
+      <p class="mt-2 ml-2">{{problem.description}}</p>
+    </div>
+    <div class="row">
+      <p class="mt-2 ml-2">Author: {{problem.user.firstName}} {{problem.user.lastName}}</p>
+    </div>
+
+    <div class="row">
+      <button class="my-button" (click)="markAsProgress()">Mark as in progress</button>
+    </div>
+    <div class="row">
+      <button class="my-button" (click)="markAsDone()">Mark as done</button>
+    </div>
+
+    <div class="row">
+      <button class="my-button" (click)="markAsClosed()">Mark as closed</button>
+    </div>
+  </div>
+</div>

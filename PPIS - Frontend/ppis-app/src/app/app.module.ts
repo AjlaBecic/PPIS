@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MainComponentComponent } from './components/main-component/main-component.component';
@@ -21,6 +21,9 @@ import { AdminrequestComponent } from './components/admins/adminrequest/adminreq
 import { ManagerproblemsComponent } from './components/manager/managerproblems/managerproblems.component';
 import { ManagerhomeComponent } from './components/manager/managerhome/managerhome.component';
 import { ManagerproblemComponent } from './components/manager/managerproblem/managerproblem.component';
+import { TechnicianhomeComponent } from './components/technician/technicianhome/technicianhome.component';
+import { TechnicianrequestsComponent } from './components/technician/technicianrequests/technicianrequests.component';
+import { TechnicianrequestComponent } from './components/technician/technicianrequest/technicianrequest.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +43,15 @@ import { ManagerproblemComponent } from './components/manager/managerproblem/man
     AdminrequestComponent,
     ManagerproblemsComponent,
     ManagerhomeComponent,
-    ManagerproblemComponent
+    ManagerproblemComponent,
+
+    TechnicianhomeComponent,
+    TechnicianrequestsComponent,
+    TechnicianrequestComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule,                        
+    FormsModule,
     ReactiveFormsModule, AppRoutingModule,
     HttpClientModule
   ],

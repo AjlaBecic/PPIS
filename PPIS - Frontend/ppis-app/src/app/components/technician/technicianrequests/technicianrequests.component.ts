@@ -1,0 +1,44 @@
+import { Component, OnInit } from '@angular/core';
+import { RequestService } from 'src/app/services/request.service';
+import { Problem } from 'src/app/models/problem';
+import { first } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  selector: 'app-technicianrequests',
+  templateUrl: './technicianrequests.component.html',
+  styleUrls: ['./technicianrequests.component.css']
+})
+export class TechnicianrequestsComponent implements OnInit {
+  private filter : string;
+  private problems : Problem[];
+  constructor(
+    private requestService : RequestService,
+    private route : ActivatedRoute
+  ) {
+    this.route.url.subscribe(params => {
+      this.filter = this.route.snapshot.paramMap.get('filter');
+      this.problems = [];
+      this.getProblems();
+
+    });
+
+  }
+  getProblems() {
+    this.requestService.getNewProblemsTech()
+      .pipe(first())
+      .subscribe(response => {
+        if (response.statusCode == 200)
+          this.problems = response.data;
+          console.log(this.problems);
+      });
+  }
+
+  ngOnInit() {
+
+    this.getProblems();
+  }
+
+
+
+}

@@ -12,6 +12,9 @@ import { AdminnewproblemComponent } from './components/admins/adminnewproblem/ad
 import { ManagerhomeComponent } from './components/manager/managerhome/managerhome.component';
 import { ManagerproblemsComponent } from './components/manager/managerproblems/managerproblems.component';
 import { ManagerproblemComponent } from './components/manager/managerproblem/managerproblem.component';
+import { TechnicianhomeComponent } from './components/technician/technicianhome/technicianhome.component';
+import { TechnicianrequestsComponent } from './components/technician/technicianrequests/technicianrequests.component';
+import { TechnicianrequestComponent } from './components/technician/technicianrequest/technicianrequest.component';
 
 const routes : Routes = [
   {path : 'login', component : LoginComponent},
@@ -25,6 +28,12 @@ const routes : Routes = [
       {path : 'requests', component : AdminrequestsComponent},
       {path : 'request/:id', component : AdminrequestComponent},
       {path : 'problem', component : AdminnewproblemComponent}
+    ]
+  },
+  {path : 'technician', component : TechnicianhomeComponent,
+    children : [
+      {path : 'requests', component : TechnicianrequestsComponent},
+      {path : 'request/:id', component : TechnicianrequestComponent}
     ]
   },
   { path : 'manager', component : ManagerhomeComponent,

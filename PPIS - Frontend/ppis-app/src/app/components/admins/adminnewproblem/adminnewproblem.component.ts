@@ -20,7 +20,7 @@ export class AdminnewproblemComponent implements OnInit {
     private userService : UserService,
     private requestService : RequestService,
     private formBuilder : FormBuilder
-  ) { 
+  ) {
     this.userService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -47,7 +47,10 @@ export class AdminnewproblemComponent implements OnInit {
     .pipe(first())
     .subscribe(response => {
       if (response.statusCode == 200) {
-
+        alert("Uspješno kreiran problem!");
+      }
+      else {
+        alert("Došlo je do greške!");
       }
     })
   }

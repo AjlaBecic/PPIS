@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    if (this.loginForm.invalid) 
+    if (this.loginForm.invalid)
       return;
     this.userService.login(this.con.username.value, this.con.password.value)
     .pipe(first())
@@ -45,7 +45,9 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/admin']);
         else if (data.data.role === 'manager')
           this.router.navigate(['/manager']);
-      } 
-    })    
+        else if (data.data.role === 'technician')
+          this.router.navigate(['/technician']);
+      }
+    })
   }
 }

@@ -1,9 +1,10 @@
 {
     "database" : {
-        "name" : "mobile-nine",
+        "name" : "mobile9",
         "user" : "root",
-        "password" : "",
+        "password" : "amera",
         "dialect" : "mysql",
-        "host" : "127.0.0.1"
+        "host" : "localhost",
+        "port" : 2206
     }
 }

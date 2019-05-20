@@ -42,6 +42,32 @@ export class RequestService {
     }));
   }
 
+  markAsDone(id) {
+    return this.http.put<any>(`${config.api.url}/problem/done`, {'problemId' : id})
+    .pipe(map(response => {
+      return response;
+    }));
+  }
+  markAsClosed(id) {
+    return this.http.put<any>(`${config.api.url}/problem/closed`, {'problemId' : id})
+    .pipe(map(response => {
+      return response;
+    }));
+  }
+  markAsProgress(id) {
+    return this.http.put<any>(`${config.api.url}/problem/progress`, {'problemId' : id})
+    .pipe(map(response => {
+      return response;
+    }));
+  }
+  dodijeliTehnicaru(id) {
+    console.log("ovdje", id);
+    return this.http.put<any>(`${config.api.url}/problem/dodijeliTehnicaru`, {'problemId' : id})
+    .pipe(map(response => {
+      return response;
+    }));
+  }
+
   getNewProblems() {
     return this.http.get<any>(`${config.api.url}/problem/new`)
     .pipe(map(response => {
@@ -49,12 +75,20 @@ export class RequestService {
     }));
   }
 
+  getNewProblemsTech() {
+    return this.http.get<any>(`${config.api.url}/problem/tech`)
+    .pipe(map(response => {
+      return response;
+    }));
+  }
   getAllProblems() {
     return this.http.get<any>(`${config.api.url}/problem/all`)
     .pipe(map(response => {
       return response;
     }));
   }
+
+
 
   getProblem(id) {
     return this.http.get<any>(`${config.api.url}/problem`, {params : {'id' : id}})

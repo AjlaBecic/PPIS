@@ -13,6 +13,7 @@ import { first } from 'rxjs/operators';
 })
 
 export class ManagerproblemComponent implements OnInit {
+  request : Problem;
   selectedStatus: string;
   selectedPriority: string;
   selectedCategory: string;
@@ -23,7 +24,7 @@ export class ManagerproblemComponent implements OnInit {
             "Traženje privremenog rješenja u toku", "Traženje trajnog rješenja u toku", "Predložena promjena",
             "Promjene u toku", "Zatvoreno", "Promjena nije prihvaćena"];
   priorityList = ["Nizak", "Visok"];
-  categoryList = [];
+  categoryList = ["Istraživanje", "Softver", "Hardver", "Mreža"];
   groupList = [
     new Group("Grupa 1", ["Ajla Bećić", "Maid Bajramović"], ""), new Group("Grupa 2", ["Amera Alić", "Rasim Šabanović"], ""),
     new Group("Grupa 3", ["Mirza Mesihović", "Dejan Aćimović"], ""), new Group("Grupa 4", ["Amar Burić", "Irhad Halilović"], ""),
@@ -34,8 +35,8 @@ export class ManagerproblemComponent implements OnInit {
   constructor(
     private route : ActivatedRoute,
     private requestService : RequestService
-  ) { 
-   
+  ) {
+
   }
 
   getProblem(id) {
@@ -51,8 +52,26 @@ export class ManagerproblemComponent implements OnInit {
   ngOnInit() {
     this.getProblem(this.route.snapshot.paramMap.get('id'));
     this.selectedTab = 0;
+    var id = this.route.snapshot.paramMap.get("id");
+    this.requestService.getRequest(id);
+
   }
 
+  dodijeliTehnicaru() {
+    //alert( this.route.snapshot.paramMap.get("id"));
+
+    this.requestService.dodijeliTehnicaru( this.route.snapshot.paramMap.get("id"))
+    .pipe(first())
+    .subscribe(response => {
+      if (response.statusCode == 200) {
+        alert("Zahtjev uspješno dodijeljen tehničaru!");
+      }
+      else {
+        alert("Došlo je do greške!");
+      }
+    });
+
+  }
   selectStatus(value: any){
     this.selectedStatus = value;
   }
@@ -77,5 +96,7 @@ export class ManagerproblemComponent implements OnInit {
   changeTab(value: any){
     this.selectedTab = value;
   }
+
+
 
 }

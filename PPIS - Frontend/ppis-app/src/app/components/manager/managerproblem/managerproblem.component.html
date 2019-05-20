@@ -13,12 +13,12 @@
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
             <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li *ngFor="let status of statusList" name="status" (click)="selectStatus(status)"><a href="#">{{ status }}</a></li>
+              <li *ngFor="let status of statusList" name="status" (click)="selectStatus(status)">{{ status }}</li>
             </ul>
           </div>
         </div>
       </div>
-    </div>  
+    </div>
   </div>
 
   <div class="row mt-2">
@@ -30,12 +30,12 @@
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
             <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li *ngFor="let priority of priorityList" (click)="selectPriority(priority)"><a href="#">{{ priority }}</a></li>
+              <li *ngFor="let priority of priorityList" (click)="selectPriority(priority)">{{ priority }}</li>
             </ul>
           </div>
         </div>
       </div>
-    </div>  
+    </div>
   </div>
 </div>
 
@@ -50,12 +50,12 @@
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
             <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li *ngFor="let category of categoryList" (click)="selectCategory(category)"><a href="#">{{ category }}</a></li>
+              <li *ngFor="let category of categoryList" (click)="selectCategory(category)">{{ category }}</li>
             </ul>
           </div>
         </div>
       </div>
-    </div>  
+    </div>
   </div>
 </div>
 
@@ -70,14 +70,14 @@
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
             <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li *ngFor="let group of groupList" (click)="selectGroup(group)"><a href="#">{{ group.name }}</a></li>
+              <li *ngFor="let group of groupList" (click)="selectGroup(group)">{{ group.name }}</li>
             </ul>
           </div>
         </div>
       </div>
-    </div>  
+    </div>
   </div>
-  
+
   <div class="row mt-2">
     <div class="col-sm-2"><span>Representative:</span></div>
       <div class="col-sm-10"><div class="input-group">
@@ -87,12 +87,12 @@
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
             <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li *ngFor="let group of selectedGroup.members" (click)="selectTeamLead(group)"><a href="#">{{ group }}</a></li>
+              <li *ngFor="let group of selectedGroup.members" (click)="selectTeamLead(group)">{{ group }}</li>
             </ul>
           </div>
         </div>
       </div>
-    </div>  
+    </div>
   </div>
 </div>
 
@@ -102,8 +102,12 @@
       <div class="col-sm-10"><div class="input-group">
         <textarea [(ngModel)]="problem" type="text" class="form-control" placeholder="{{ problem }}" cols="38"></textarea>
       </div>
-    </div>  
+    </div>
   </div>
+</div>
+
+<div class="row">
+  <button class="my-button" (click)="dodijeliTehnicaru()">Dodijeli tehničaru</button>
 </div>
 
 <div class="group-box">

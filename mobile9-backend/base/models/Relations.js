@@ -31,6 +31,7 @@ Problem.getAllRequests = function(fn) {
         ],
         where : {
             isProblem : false
+           
         }
     })
     .then(problems => {
@@ -51,6 +52,7 @@ Problem.getNewProblems = function(fn) {
         where : {
             isProblem : true,
             processed : false
+            
         }
     })
     .then(problems => {
@@ -60,6 +62,27 @@ Problem.getNewProblems = function(fn) {
         return fn(null, Responses.NOK(error.message));
     });
 }
+
+Problem.getProblemsTech = function(fn) {
+    Problem.findAll({
+        include : [
+           {
+               model : User, as : 'user'
+           }
+        ],
+        where : {
+            isProblem : true,
+            dodijeliTehnicaru : true
+        }
+    })
+    .then(problems => {
+        return fn('yes', Responses.OK(problems));
+    })
+    .catch(error => {
+        return fn(null, Responses.NOK(error.message));
+    });
+}
+
 
 Problem.getProcessedProblems = function(fn) {
     Problem.findAll({

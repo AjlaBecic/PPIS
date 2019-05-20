@@ -17,6 +17,32 @@ const ProblemController = (() => {
         });
     };
 
+    const closed = (req, res) => {
+        var problemId = req.body.problemId;
+        Problem.closed(problemId, function(success, data) {
+            res.end(JSON.stringify(data));
+        });
+    };
+
+    const done = (req, res) => {
+        var problemId = req.body.problemId;
+        Problem.done(problemId, function(success, data) {
+            res.end(JSON.stringify(data));
+        });
+    };
+    const progress = (req, res) => {
+        var problemId = req.body.problemId;
+        Problem.progress(problemId, function(success, data) {
+            res.end(JSON.stringify(data));
+        });
+    };
+    const dodijeliTehnicaru = (req, res) => {
+        var problemId = req.body.problemId;
+        Problem.dodijeliTehnicaru(problemId, function(success, data) {
+            res.end(JSON.stringify(data));
+        });
+    };
+
     const getAllRequests = (req, res) => {
         Problem.getAllRequests(function(success, data) {
             res.end(JSON.stringify(data));
@@ -33,6 +59,12 @@ const ProblemController = (() => {
 
     const getNewProblems = (req, res) => {
         Problem.getNewProblems(function(success, data) {
+            res.end(JSON.stringify(data));
+        });
+    }
+
+    const getProblemsTech = (req, res) => {
+        Problem.getProblemsTech(function(success, data) {
             res.end(JSON.stringify(data));
         });
     }
@@ -57,7 +89,12 @@ const ProblemController = (() => {
         getRequest : getRequest,
         getNewProblems : getNewProblems,
         getProcessedProblems : getProcessedProblems,
-        getProblem : getProblem
+        getProblem : getProblem,
+        dodijeliTehnicaru: dodijeliTehnicaru,
+        getProblemsTech : getProblemsTech,
+        closed : closed,
+        done : done,
+        progress : progress
     }
 })();
 

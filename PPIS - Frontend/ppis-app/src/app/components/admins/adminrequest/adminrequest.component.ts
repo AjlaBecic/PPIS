@@ -31,14 +31,15 @@ export class AdminrequestComponent implements OnInit {
   }
 
   markAsProblem() {
+    alert(this.request.id);
     this.requestService.markAsProblem(this.request.id)
     .pipe(first())
     .subscribe(response => {
       if (response.statusCode == 200) {
-
+        alert("Zahtjev uspješno označen kao problem!");
       }
       else {
-
+        alert("Došlo je do greške!");
       }
     });
   }
