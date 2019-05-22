@@ -24,6 +24,8 @@ import { ManagerproblemComponent } from './components/manager/managerproblem/man
 import { TechnicianhomeComponent } from './components/technician/technicianhome/technicianhome.component';
 import { TechnicianrequestsComponent } from './components/technician/technicianrequests/technicianrequests.component';
 import { TechnicianrequestComponent } from './components/technician/technicianrequest/technicianrequest.component';
+import { NewactivityComponent } from './components/activities/newactivity/newactivity.component';
+
 
 @NgModule({
   declarations: [
@@ -44,7 +46,7 @@ import { TechnicianrequestComponent } from './components/technician/technicianre
     ManagerproblemsComponent,
     ManagerhomeComponent,
     ManagerproblemComponent,
-
+    NewactivityComponent,
     TechnicianhomeComponent,
     TechnicianrequestsComponent,
     TechnicianrequestComponent

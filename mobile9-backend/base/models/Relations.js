@@ -18,6 +18,8 @@ Problem.belongsTo(Solution);
 Log.belongsTo(User);
 Log.belongsTo(Problem);
 
+User.belongsTo(Group);
+
 
 Activity.belongsTo(Problem);
 Activity.belongsTo(User);
@@ -40,6 +42,27 @@ Problem.getAllRequests = function(fn) {
     .catch(error => {
         return fn(null, Responses.NOK(error.message));
     });
+}
+
+User.findUser = function(user, fn) {
+    User.findOne({
+        where : {
+            username : user.username,
+            password : user.password
+        },
+        include : [
+            {model : Group, as : 'group'}
+        ]
+    })
+    .then(user => {
+        if (user)
+            return fn('yes', Responses.OK(user));
+        else    
+            return fn('no', Responses.BAD_REQUEST('Username and/or password are incorrect.'));
+    })
+    .catch(error => {
+        return fn(null, Responses.NOK(error.message));
+    })
 }
 
 Problem.getNewProblems = function(fn) {
@@ -128,7 +151,8 @@ Problem.getProblem = function(id, fn) {
     Problem.findOne({
         include : [
             {
-                model : User, as : 'user'
+                model : User, as : 'user',
+                model : Group, as : 'group'
             }
         ],
         where : {
@@ -137,6 +161,60 @@ Problem.getProblem = function(id, fn) {
     })
     .then(problem => {
         return fn('yes', Responses.OK(problem));
+    })
+    .catch(error => {
+        return fn(null, Responses.NOK(error.message));
+    });
+}
+
+Problem.getDocumentation = function(id, fn) {
+    Problem.findOne({
+        include : [
+            {
+               model : Solution, as : 'solution'
+            }
+        ],
+        where : {
+            id : id
+        }
+    })
+    .then(problem => {
+        return fn('yes', Responses.OK(problem));
+    })
+    .catch(error => {
+        return fn(null, Responses.NOK(error.message));
+    });
+}
+
+Problem.getProblemsForTech = function(groupId, fn) {
+    Problem.findAll({
+        include : [
+            { model : User, as : 'user'}
+        ],
+        where : {
+            groupId : groupId,
+            processed : true
+        }
+    })
+    .then(problems => {
+        return fn('yes', Responses.OK(problems));
+    })
+    .catch(error => {
+        return fn(null, Responses.OK(error.message));
+    });
+}
+
+Activity.getActivites = function(problemId, fn) {
+    Activity.findAll({
+        include : [
+            { model : User, as : 'user'}
+        ],
+        where : {
+            problemId : problemId
+        }
+    })
+    .then(problems => {
+        return fn('yes', Responses.OK(problems));
     })
     .catch(error => {
         return fn(null, Responses.NOK(error.message));

@@ -5,6 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Problem } from 'src/app/models/problem';
 import { RequestService } from 'src/app/services/request.service';
 import { first } from 'rxjs/operators';
+import { GroupService } from 'src/app/services/group.service';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-managerproblem',
@@ -19,34 +22,44 @@ export class ManagerproblemComponent implements OnInit {
   selectedCategory: string;
   problem: string;
   selectedTab: Tabs;
-  selectedGroup = new Group("", [], "");
-  statusList = ["Novi problem (čeka validaciju)", "Planiranje u toku", "Traženje izvornog uzroka u toku",
-            "Traženje privremenog rješenja u toku", "Traženje trajnog rješenja u toku", "Predložena promjena",
-            "Promjene u toku", "Zatvoreno", "Promjena nije prihvaćena"];
+  selectedGroup = new Group(-1, '');
+  statusList = ["Novi problem (ceka validaciju)", "Planiranje u toku", "Trazenje izvornog uzroka u toku",
+            "Traženje privremenog rjesenja u toku", "Trazenje trajnog rjesenja u toku", "Predlozena promjena",
+            "Promjene u toku", "Zatvoreno", "Promjena nije prihvacena"];
   priorityList = ["Nizak", "Visok"];
   categoryList = ["Istraživanje", "Softver", "Hardver", "Mreža"];
   groupList = [
-    new Group("Grupa 1", ["Ajla Bećić", "Maid Bajramović"], ""), new Group("Grupa 2", ["Amera Alić", "Rasim Šabanović"], ""),
-    new Group("Grupa 3", ["Mirza Mesihović", "Dejan Aćimović"], ""), new Group("Grupa 4", ["Amar Burić", "Irhad Halilović"], ""),
+    /*new Group("Grupa 1", ["Ajla Bećić", "Maid Bajramović"], ""), new Group("Grupa 2", ["Amera Alić", "Rasim Šabanović"], ""),
+    new Group("Grupa 3", ["Mirza Mesihović", "Dejan Aćimović"], ""), new Group("Grupa 4", ["Amar Burić", "Irhad Halilović"], ""),*/
   ];
 
   currentProblem : Problem;
+  currentUser : User;
 
   constructor(
     private route : ActivatedRoute,
-    private requestService : RequestService
+    private requestService : RequestService,
+    private groupService : GroupService,
+    private userService : UserService
   ) {
-
+    this.userService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   getProblem(id) {
-    this.requestService.getProblem(id)
+    this.groupService.getAll()
     .pipe(first())
     .subscribe(response => {
       console.log(response);
-      if (response.statusCode == 200)
-        this.currentProblem = response.data;
-    })
+      if (response.statusCode == 200) 
+        this.groupList = response.data;
+      this.requestService.getProblem(id)
+      .pipe(first())
+      .subscribe(response => {
+        console.log(response);
+        if (response.statusCode == 200)
+          this.currentProblem = response.data;
+      });
+    });
   }
 
   ngOnInit() {
@@ -57,7 +70,16 @@ export class ManagerproblemComponent implements OnInit {
 
   }
 
-  dodijeliTehnicaru() {
+  save() {
+    console.log(this.currentProblem);
+    this.requestService.updateProblem(this.currentProblem)
+    .pipe(first())
+    .subscribe(response => {
+      console.log(response);
+    });
+  }
+
+  /*dodijeliTehnicaru() {
     //alert( this.route.snapshot.paramMap.get("id"));
 
     this.requestService.dodijeliTehnicaru( this.route.snapshot.paramMap.get("id"))
@@ -71,26 +93,28 @@ export class ManagerproblemComponent implements OnInit {
       }
     });
 
-  }
+  }*/
+
   selectStatus(value: any){
-    this.selectedStatus = value;
+    this.currentProblem.status = value;
   }
 
   selectPriority(value: any){
-    this.selectedPriority = value;
+    this.currentProblem.priority = value;
   }
 
   selectCategory(value: any){
-    this.selectedCategory = value;
+    this.currentProblem.category = value;
   }
 
   selectGroup(value: any){
-    this.selectedGroup = value;
+    this.currentProblem.group = new Group(value.id, value.name);
+    //this.selectedGroup = value;
   }
 
   selectTeamLead(value: any){
-    this.selectedGroup.teamLead = value;
-    console.log(this.selectedGroup.teamLead);
+    //this.selectedGroup.teamLead = value;
+    //console.log(this.selectedGroup.teamLead);
   }
 
   changeTab(value: any){

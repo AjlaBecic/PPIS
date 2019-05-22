@@ -1,3 +1,5 @@
+import { Group } from './group';
+
 export class User {
     constructor(
         public id : number,
@@ -5,6 +7,7 @@ export class User {
         public lastName : string,
         public mail : string,
         public userName : string,
-        public role : string
+        public role : string,
+        public group : Group
     ) {}
 }

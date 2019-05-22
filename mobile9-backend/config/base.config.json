@@ -1,8 +1,8 @@
 {
     "database" : {
-        "name" : "mobile9",
+        "name" : "mobile-nine",
         "user" : "root",
-        "password" : "amera",
+        "password" : "",
         "dialect" : "mysql",
         "host" : "localhost",
         "port" : 2206

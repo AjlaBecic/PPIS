@@ -41,7 +41,7 @@ export class AdminnewproblemComponent implements OnInit {
     if (this.problemForm.invalid)
       return;
     this.problem = this.problemForm.value;
-    this.problem.user = new User(this.currentUser.id, null, null, null, null, null);
+    this.problem.user = new User(this.currentUser.id, null, null, null, null, null, null);
     this.problem.isProblem = true;
     this.requestService.newClientRequest(this.problem)
     .pipe(first())

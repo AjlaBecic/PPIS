@@ -1,0 +1,25 @@
+<form [formGroup]="activityForm" class="request-form" (ngSubmit)="onSubmit()">
+  <div class="container-fluid m-2">
+    <div class="row">
+      <h3 class="header">New request</h3>
+    </div>
+  </div>
+  <div class="form-group m-2">
+    <input type="text" class="form-control" formControlName="type" placeholder="Type" [ngClass]="{'is-invalid' : submitted && con.type.errors}">
+    <div *ngIf="submitted && con.type.errors" class="invalid-feedback">
+      <div *ngIf="con.type.errors.required">Type is required.</div>
+    </div>
+  </div>
+  <div class="form-group m-2">
+    <textarea type="text" class="form-control" formControlName="description" placeholder="Description (5-250 characters)" [ngClass]="{'is-invalid':submitted && con.description.errors}"></textarea>
+    <div *ngIf="submitted && con.description.errors" class="invalid-feedback">
+      <div *ngIf="con.description.errors.maxlength">Description is too large (max 250 characters).</div>
+      <div *ngIf="con.description.errors.minlength">Description is too short (min 5 characters).</div>
+      <div *ngIf="con.description.errors.required">Description is required.</div>
+
+    </div>
+  </div>
+  <div class="from-group text-center">
+    <button class="my-button">Send</button>
+  </div>
+</form>

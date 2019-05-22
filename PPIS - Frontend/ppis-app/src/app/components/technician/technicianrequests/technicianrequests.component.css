@@ -16,3 +16,10 @@
   display: block;
 }
 
+.problem-div {
+  border-radius: 12px;
+  background-color: aliceblue;
+  margin: 2%;
+  width: 96%;
+}
+

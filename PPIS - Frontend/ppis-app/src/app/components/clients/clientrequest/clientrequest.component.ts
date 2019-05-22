@@ -42,7 +42,7 @@ export class ClientrequestComponent implements OnInit {
     if (this.requestForm.invalid)
       return;
     this.problem = this.requestForm.value;// new Problem(null, this.con.title.value, this.con.description.value, null, this.currentUser.id);
-    this.problem.user = new User(this.currentUser.id, null, null, null, null, null);
+    this.problem.user = new User(this.currentUser.id, null, null, null, null, null, null);
     this.problem.isProblem = false;
     this.problem.dodijeliTehnicaru=false;
 

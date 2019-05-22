@@ -4,6 +4,7 @@ const ProblemController = require('./problem.controller');
 
 ProblemRouter.post('/', ProblemController.newProblem);
 ProblemRouter.put('/markProblem', ProblemController.markAsProblem);
+ProblemRouter.put('/', ProblemController.updateProblem);
 
 ProblemRouter.put('/closed', ProblemController.closed);
 ProblemRouter.put('/done', ProblemController.done);
@@ -16,5 +17,7 @@ ProblemRouter.get('/request', ProblemController.getRequest);
 ProblemRouter.get('/all', ProblemController.getProcessedProblems);
 ProblemRouter.get('/new', ProblemController.getNewProblems);
 ProblemRouter.get('/', ProblemController.getProblem);
+ProblemRouter.get('/documentation', ProblemController.getDocumentation);
+ProblemRouter.get('/forTech', ProblemController.getProblemsForTech);
 
 module.exports = ProblemRouter;

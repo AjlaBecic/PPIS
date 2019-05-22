@@ -42,6 +42,13 @@ export class RequestService {
     }));
   }
 
+  updateProblem(problem) {
+    return this.http.put<any>(`${config.api.url}/problem`, {'problem' : problem})
+    .pipe(map(response => {
+      return response;
+    }));
+  }
+
   markAsDone(id) {
     return this.http.put<any>(`${config.api.url}/problem/done`, {'problemId' : id})
     .pipe(map(response => {
@@ -92,6 +99,20 @@ export class RequestService {
 
   getProblem(id) {
     return this.http.get<any>(`${config.api.url}/problem`, {params : {'id' : id}})
+    .pipe(map(response => {
+      return response;
+    }));
+  }
+
+  getDocumentation(id) {
+    return this.http.get<any>(`${config.api.url}/problem/documentation`, {params : {'id' : id}})
+    .pipe(map(response => {
+      return response;
+    }));
+  }
+
+  getProblemsForTech(id) {
+    return this.http.get<any>(`${config.api.url}/problem/forTech`, {params : {'id' : id}})
     .pipe(map(response => {
       return response;
     }));

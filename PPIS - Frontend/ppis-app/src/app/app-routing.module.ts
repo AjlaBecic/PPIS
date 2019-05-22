@@ -15,6 +15,9 @@ import { ManagerproblemComponent } from './components/manager/managerproblem/man
 import { TechnicianhomeComponent } from './components/technician/technicianhome/technicianhome.component';
 import { TechnicianrequestsComponent } from './components/technician/technicianrequests/technicianrequests.component';
 import { TechnicianrequestComponent } from './components/technician/technicianrequest/technicianrequest.component';
+import { DocumentationComponent } from './components/documentation/documentation.component';
+import { ActivityComponent } from './components/activity/activity.component';
+import { NewactivityComponent } from './components/activities/newactivity/newactivity.component';
 
 const routes : Routes = [
   {path : 'login', component : LoginComponent},
@@ -32,14 +35,19 @@ const routes : Routes = [
   },
   {path : 'technician', component : TechnicianhomeComponent,
     children : [
-      {path : 'requests', component : TechnicianrequestsComponent},
-      {path : 'request/:id', component : TechnicianrequestComponent}
+      {path : 'problems', component : TechnicianrequestsComponent},
+      {path : 'problem/:id', component : ManagerproblemComponent},
+      {path : 'problem/:id/activities', component : ActivityComponent},
+      {path : 'problem/:id/activities/new', component : NewactivityComponent}
+
     ]
   },
   { path : 'manager', component : ManagerhomeComponent,
     children : [
       {path : 'problems/:filter', component : ManagerproblemsComponent},
-      {path : 'problem/:id', component : ManagerproblemComponent}
+      {path : 'problem/:id', component : ManagerproblemComponent},
+      {path : 'problem/:id/documentation', component : DocumentationComponent},
+      {path : 'problem/:id/activities', component : ActivityComponent}
     ]
   }
 ];

@@ -3,6 +3,8 @@ import { RequestService } from 'src/app/services/request.service';
 import { Problem } from 'src/app/models/problem';
 import { first } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-technicianrequests',
@@ -12,20 +14,17 @@ import { ActivatedRoute } from '@angular/router';
 export class TechnicianrequestsComponent implements OnInit {
   private filter : string;
   private problems : Problem[];
+  private currentUser : User;
   constructor(
     private requestService : RequestService,
-    private route : ActivatedRoute
+    private route : ActivatedRoute,
+    private userService : UserService
   ) {
-    this.route.url.subscribe(params => {
-      this.filter = this.route.snapshot.paramMap.get('filter');
-      this.problems = [];
-      this.getProblems();
-
-    });
+    this.userService.currentUser.subscribe(x => this.currentUser = x);
 
   }
   getProblems() {
-    this.requestService.getNewProblemsTech()
+    this.requestService.getProblemsForTech(this.currentUser.group.id)
       .pipe(first())
       .subscribe(response => {
         if (response.statusCode == 200)
