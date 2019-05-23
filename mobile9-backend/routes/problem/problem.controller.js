@@ -1,31 +1,26 @@
 const db = require('../../base/base-connect.js');
 
-const { Problem, Solution } = db.import('../../base/models/Relations.js');
+const { Problem } = db.import('../../base/models/Relations.js');
 
 const ProblemController = (() => {
+    
     const newProblem = (req, res) => {
         var problem = req.body.problem;
         Problem.newProblem(problem, function(success, data) {
-            Solution.newSolution(function(success, _data) {
-                if (success === 'yes') {
-                    Problem.assignSolution(data.data.id, _data.data.id, function(_success, __data) {
-                        if (_success === 'yes')
-                            res.end(JSON.stringify(data));
-                        else
-                            res.end(JSON.stringify(__data));
-                    })
-                }
-                else {
-                    res.end(JSON.stringify(_data));
-                }
-            })
-            //res.end(JSON.stringify(data));
+            res.end(JSON.stringify(data));
         });
     };
 
     const markAsProblem = (req, res) => {
         var problemId = req.body.problemId;
         Problem.markAsProblem(problemId, function(success, data) {
+            res.end(JSON.stringify(data));
+        });
+    };
+
+    const markAsChange = (req, res) => {
+        var problemId = req.body.problemId;
+        Problem.markAsChange(problemId, function(success, data) {
             res.end(JSON.stringify(data));
         });
     };
@@ -69,6 +64,12 @@ const ProblemController = (() => {
         });
     }
 
+    const getMyRequests = (req, res) => {
+        var id = req.query.id;
+        Problem.getMyRequests(id, function(success, data) {
+            res.end(JSON.stringify(data));
+        });
+    }
 
     const getNewProblems = (req, res) => {
         Problem.getNewProblems(function(success, data) {
@@ -95,27 +96,6 @@ const ProblemController = (() => {
         });
     }
 
-    const updateProblem = (req, res) => {
-        var problem = req.body.problem;
-        Problem.updateProblem(problem, function(success, data) {
-            res.end(JSON.stringify(data));
-        });
-    }
-
-    const getDocumentation = (req, res) => {
-        var id = req.query.id;
-        Problem.getDocumentation(id, function(success, data) {
-            res.end(JSON.stringify(data));
-        })
-    }
-
-    const getProblemsForTech = (req, res) => {
-        var id = req.query.id;
-        Problem.getProblemsForTech(id, function(success, data) {
-            res.end(JSON.stringify(data));
-        });
-    }
-
     return {
         newProblem : newProblem,
         markAsProblem : markAsProblem,
@@ -124,15 +104,13 @@ const ProblemController = (() => {
         getNewProblems : getNewProblems,
         getProcessedProblems : getProcessedProblems,
         getProblem : getProblem,
-        updateProblem : updateProblem,
-        getDocumentation : getDocumentation,
-        getProblemsForTech : getProblemsForTech,
-
         dodijeliTehnicaru: dodijeliTehnicaru,
         getProblemsTech : getProblemsTech,
         closed : closed,
         done : done,
-        progress : progress
+        progress : progress,
+        markAsChange : markAsChange,
+        getMyRequests : getMyRequests
     }
 })();
 

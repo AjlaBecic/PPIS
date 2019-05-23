@@ -10,21 +10,23 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./managerproblems.component.css']
 })
 export class ManagerproblemsComponent implements OnInit {
+
   private filter : string;
   private problems : Problem[];
   constructor(
     private requestService : RequestService,
     private route : ActivatedRoute
-  ) { 
+  ) {
     this.route.url.subscribe(params => {
       this.filter = this.route.snapshot.paramMap.get('filter');
       this.problems = [];
       this.getProblems();
     });
-   
+
   }
 
   getProblems() {
+    alert("uslaa555");
     if (this.filter === 'all') {
       this.requestService.getAllProblems()
       .pipe(first())

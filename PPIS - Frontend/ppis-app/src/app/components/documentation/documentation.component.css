@@ -10,14 +10,3 @@ h1, p{
 .group-box{
     margin-top: 2%;
 }
-
-.main-div {
-    height: 94%;
-    background: #ffffff;
-    opacity: 0.9;
-    border-radius: 12px;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    overflow: scroll;
-    display: block;
-}

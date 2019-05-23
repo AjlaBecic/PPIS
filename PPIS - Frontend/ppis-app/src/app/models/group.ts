@@ -1,3 +1,3 @@
 export class Group {
-    constructor(public id: number, public name: string){}
+    constructor(public name: string, public members: string[], public teamLead: string){}
 }

@@ -1,25 +1,13 @@
-<div *ngIf="currentProblem != null && currentUser != null" class="main-div">
+<div class="main-div">
 <div class="m-2">
   <h3 class="header">Problem processing</h3>
 </div>
-
-<div class="group-box mb-2">
-  <div class="row mt-2">
-    <div class="col-sm-2"><span>Problem:</span></div>
-      <div class="col-sm-10"><div class="input-group">
-        <input *ngIf="currentProblem != null" [(ngModel)]="currentProblem.title" type="text" class="form-control" cols="38" >
-        <input *ngIf="currentProblem == null" type="text" class="form-control" cols="38">
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="group-box">
   <div class="row">
     <div class="col-sm-2"><span>Status:</span></div>
       <div class="col-sm-10"><div class="input-group">
-        <input *ngIf="currentProblem != null" [(ngModel)]="currentProblem.status" type="text" class="form-control" placeholder="{{currentProblem.status}}" readonly>
-        <input *ngIf="currentProblem == null" type="text" class="form-control"  readonly>
+        <input *ngIf="currentProblem != null" [(ngModel)]="selectedStatus" type="text" class="form-control" placeholder="{{currentProblem.status}}" readonly>
+        <input *ngIf="currentProblem == null" [(ngModel)]="selectedStatus" type="text" class="form-control"  readonly>
         <div class="input-drop input-group-btn">
           <div class="dropdown" appDropdownDirective>
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
@@ -36,8 +24,7 @@
   <div class="row mt-2">
     <div class="col-sm-2"><span>Priority:</span></div>
       <div class="col-sm-10"><div class="input-group">
-        <input *ngIf="currentProblem != null" [(ngModel)]="currentProblem.priority" type="text" class="form-control" placeholder="{{ currentProblem.priority }}" readonly>
-        <input *ngIf="currentProblem == null" type="text" class="form-control" readonly>
+        <input [(ngModel)]="selectedPriority" type="text" class="form-control" placeholder="{{ selectedPriority }}" readonly>
         <div class="input-drop input-group-btn">
           <div class="dropdown" appDropdownDirective>
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
@@ -52,13 +39,12 @@
   </div>
 </div>
 
-<div *ngIf="currentUser.role=='manager'" class="group-box mt-3">
+<div class="group-box mt-3">
   <p class="my-header">Problem classification</p>
   <div class="row">
     <div class="col-sm-2"><span>Category:</span></div>
       <div class="col-sm-10"><div class="input-group">
-        <input *ngIf="currentProblem != null" [(ngModel)]="currentProblem.category" type="text" class="form-control" placeholder="{{ currentProblem.category }}" readonly>
-        <input *ngIf="currentProblem == null" type="text" class="form-control" readonly>
+        <input [(ngModel)]="selectedCategory" type="text" class="form-control" placeholder="{{ selectedCategory }}" readonly>
         <div class="input-drop input-group-btn">
           <div class="dropdown" appDropdownDirective>
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
@@ -73,14 +59,12 @@
   </div>
 </div>
 
-<div *ngIf="currentUser.role == 'admin'" class="group-box mt-3">
+<div class="group-box mt-3">
   <p class="my-header">Problem assign</p>
   <div class="row">
     <div class="col-sm-2"><span>Group:</span></div>
       <div class="col-sm-10"><div class="input-group">
-        <input *ngIf="currentProblem != null && currentProblem.group != null" [(ngModel)]="currentProblem.group.name" type="text" class="form-control" placeholder="{{ currentProblem.group.name }}" readonly>
-        <input *ngIf="currentProblem != null && currentProblem.group == null"  type="text" class="form-control" readonly>
-        <input *ngIf="currentProblem == null"  type="text" class="form-control" readonly>
+        <input [(ngModel)]="selectedGroup.name" type="text" class="form-control" placeholder="{{ selectedGroup.name }}" readonly>
         <div class="input-drop input-group-btn">
           <div class="dropdown" appDropdownDirective>
             <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
@@ -93,9 +77,8 @@
       </div>
     </div>
   </div>
-</div>
 
-  <!----<div class="row mt-2">
+  <div class="row mt-2">
     <div class="col-sm-2"><span>Representative:</span></div>
       <div class="col-sm-10"><div class="input-group">
         <input [(ngModel)]="selectedGroup.teamLead" type="text" class="form-control" placeholder="{{ selectedGroup.teamLead }}" readonly>
@@ -111,34 +94,25 @@
       </div>
     </div>
   </div>
-</div>--->
-
-<div class="row mt-2 text-center w-100">
-  <div class="col-sm-12">
-    <button class="my-button" (click)="save()">Save changes</button>
-  </div>
 </div>
 
-<div class="row mt-3 text-center w-100">
-  <div class="col-sm-5">
-    <button *ngIf="currentProblem != null && currentUser.role=='manager'" routerLink="/manager/problem/{{currentProblem.id}}/documentation" class="my-button">Documentation</button>
-    <button *ngIf="currentUser.role=='technician'" routerLink="/technician/problem/{{currentProblem.id}}/documentation" class="my-button">Documentation</button>
+<div class="group-box">
+  <div class="row mt-2">
+    <div class="col-sm-2"><span>Problem:</span></div>
+      <div class="col-sm-10"><div class="input-group">
+        <textarea [(ngModel)]="problem" type="text" class="form-control" placeholder="{{ problem }}" cols="38"></textarea>
+      </div>
+    </div>
   </div>
-</div>
-<div class="row mt-2 text-center w-100">
-  <div class="col-sm-5">
-      <button *ngIf="currentUser.role=='manager'" routerLink="/manager/problem/{{currentProblem.id}}/activities" class="my-button">Activities</button>
-      <button *ngIf="currentUser.role=='technician'" routerLink="/technician/problem/{{currentProblem.id}}/activities" class="my-button">Activities</button>
-  </div>
-</div>
-<div class="row mt-2 text-center w-100">
-  <div class="col-sm-5">
-    <button class="my-button">History</button>
-  </div>
-</div>
 </div>
 
-<!-----<div class="group-box">
+<div class="row">
+  <button class="my-button" (click)="dodijeliTehnicaru()">Dodijeli tehničaru</button>
+
+</div>
+
+
+<div class="group-box">
   <ul class="nav nav-pills">
       <li class="nav-item">
         <a class="nav-link active" href="#" (click)="changeTab(0)"><h3>Dokumentacija</h3></a>
@@ -153,7 +127,5 @@
 </div>
 </div>
 
-
 <app-documentation *ngIf="selectedTab == 0" ></app-documentation>
-<app-activity *ngIf="selectedTab == 1" ></app-activity> --->
-
+<app-activity *ngIf="selectedTab == 1" ></app-activity>

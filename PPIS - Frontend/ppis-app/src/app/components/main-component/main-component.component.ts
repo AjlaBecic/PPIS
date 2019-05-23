@@ -13,14 +13,15 @@ export class MainComponentComponent implements OnInit {
   selectedCategory: string;
   problem: string;
   selectedTab: Tabs;
-  selectedGroup = new Group(null, null);
+  selectedGroup = new Group("", [], "");
   statusList = ["Novi problem (čeka validaciju)", "Planiranje u toku", "Traženje izvornog uzroka u toku",
             "Traženje privremenog rješenja u toku", "Traženje trajnog rješenja u toku", "Predložena promjena",
             "Promjene u toku", "Zatvoreno", "Promjena nije prihvaćena"];
   priorityList = ["Nizak", "Visok"];
   categoryList = [];
   groupList = [
-   
+    new Group("Grupa 1", ["Ajla Bećić", "Maid Bajramović"], ""), new Group("Grupa 2", ["Amera Alić", "Rasim Šabanović"], ""),
+    new Group("Grupa 3", ["Mirza Mesihović", "Dejan Aćimović"], ""), new Group("Grupa 4", ["Amar Burić", "Irhad Halilović"], ""),
   ];
 
 
@@ -47,7 +48,8 @@ export class MainComponentComponent implements OnInit {
   }
 
   selectTeamLead(value: any){
-    
+    this.selectedGroup.teamLead = value;
+    console.log(this.selectedGroup.teamLead);
   }
 
   changeTab(value: any){

@@ -12,7 +12,23 @@ const User = db.define('user', {
     role : Sequelize.STRING
 });
 
-
+User.findUser = function(user, fn) {
+    User.findOne({
+        where : {
+            username : user.username,
+            password : user.password
+        }
+    })
+    .then(user => {
+        if (user)
+            return fn('yes', Responses.OK(user));
+        else    
+            return fn('no', Responses.BAD_REQUEST('Username and/or password are incorrect.'));
+    })
+    .catch(error => {
+        return fn(null, Responses.NOK(error.message));
+    })
+}
 
 module.exports = function(db, DataType) {
     return User;

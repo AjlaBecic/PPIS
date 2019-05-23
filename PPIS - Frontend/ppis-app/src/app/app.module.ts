@@ -24,8 +24,15 @@ import { ManagerproblemComponent } from './components/manager/managerproblem/man
 import { TechnicianhomeComponent } from './components/technician/technicianhome/technicianhome.component';
 import { TechnicianrequestsComponent } from './components/technician/technicianrequests/technicianrequests.component';
 import { TechnicianrequestComponent } from './components/technician/technicianrequest/technicianrequest.component';
-import { NewactivityComponent } from './components/activities/newactivity/newactivity.component';
 
+import { CmanagerhomeComponent } from './components/cmanager/cmanagerhome/cmanagerhome.component';
+import { CmanagerchangeComponent } from './components/cmanager/cmanagerchange/cmanagerchange.component';
+import { CmanagerchangesComponent } from './components/cmanager/cmanagerchanges/cmanagerchanges.component';
+
+import { BoardhomeComponent } from './components/board/boardhome/boardhome.component';
+import { BoardchangesComponent } from './components/board/boardchanges/boardchanges.component';
+import { BoardchangeComponent } from './components/board/boardchange/boardchange.component';
+import { ClientmyrequestsComponent } from './components/clients/clientmyrequests/clientmyrequests.component';
 
 @NgModule({
   declarations: [
@@ -46,10 +53,18 @@ import { NewactivityComponent } from './components/activities/newactivity/newact
     ManagerproblemsComponent,
     ManagerhomeComponent,
     ManagerproblemComponent,
-    NewactivityComponent,
+
     TechnicianhomeComponent,
     TechnicianrequestsComponent,
-    TechnicianrequestComponent
+    TechnicianrequestComponent,
+
+    CmanagerhomeComponent,
+    CmanagerchangeComponent,
+    CmanagerchangesComponent,
+    BoardhomeComponent,
+    BoardchangesComponent,
+    BoardchangeComponent,
+    ClientmyrequestsComponent
   ],
   imports: [
     BrowserModule,

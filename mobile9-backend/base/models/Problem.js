@@ -13,15 +13,14 @@ const Problem = db.define('problem', {
     status : Sequelize.STRING,
     isProblem : Sequelize.BOOLEAN,
     processed : Sequelize.BOOLEAN,
-    category : Sequelize.STRING
     //ovo je novo
-    /*category : Sequelize.STRING,
+    category : Sequelize.STRING,
     grupa : Sequelize.STRING,
     representative : Sequelize.STRING,
     opisProblema : Sequelize.STRING,
     dodijeliTehnicaru : Sequelize.BOOLEAN,
     //za menadzera promjena
-    isChange : Sequelize.BOOLEAN*/
+    isChange : Sequelize.BOOLEAN
     
 });
 
@@ -32,19 +31,18 @@ Problem.newProblem = function(problem, fn) {
         consequences : problem.consequences,
         
         priority : problem.priority,
-        status : problem.status,
+        status : "created",
         userId : problem.user.id,
         isProblem : problem.isProblem,
         processed : false,
-        category : ''
 
-        /*category : problem.category,
+        category : problem.category,
         grupa : problem.grupa,
         representative : problem.representative,
         opisProblema : problem.opisProblema,
         dodijeliTehnicaru : problem.dodijeliTehnicaru,
         //za menadzera promjena
-        isChange : problem.isChange*/
+        isChange : problem.isChange
     })
     .then(problem => {
         return fn('yes', Responses.OK(problem));
@@ -54,17 +52,13 @@ Problem.newProblem = function(problem, fn) {
     });
 }
 
-Problem.updateProblem = function(problem, fn) {
+Problem.markAsProblem = function(problemId, fn) {
     Problem.update({
-        title : problem.title,
-        priority : problem.priority,
-        status : problem.status,
-        groupId : problem.group.id,
-        category : problem.category,
-        processed : true
-    }, {
+        isProblem : true
+    },
+    {
         where : {
-            id : problem.id
+            id : problemId
         }
     })
     .then(updated => {
@@ -72,29 +66,12 @@ Problem.updateProblem = function(problem, fn) {
     })
     .catch(error => {
         return fn(null, Responses.NOK(error.message));
-    })
+    });
 }
 
-Problem.assignSolution = function(problemId, solutionId, fn) {
+Problem.markAsChange = function(problemId, fn) {
     Problem.update({
-        solutionId : solutionId
-    }, {
-        where : {
-            id : problemId
-        }
-    })
-    .then(problem => {
-        return fn('yes', Responses.OK('updated'));
-    })
-    .catch(error => {
-        return fn(null, Responses.NOK(error.message));
-    })
-}
-
-
-Problem.markAsProblem = function(problemId, fn) {
-    Problem.update({
-        isProblem : true
+        isChange : true
     },
     {
         where : {

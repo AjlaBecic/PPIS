@@ -1,7 +1,6 @@
 import { User } from './user';
 import { Status } from './status';
 import { Group } from './group';
-import { Solution } from './solution';
 
 export class Problem {
     constructor(
@@ -10,8 +9,7 @@ export class Problem {
         public description : string,
         public consequences : string,
         public user : User,
-        public group : Group,
-        public solution : Solution,
+
         public priority  : string,
         public status : string,
         public isProblem : boolean,
@@ -20,7 +18,6 @@ export class Problem {
         public representative : string,
         public opisProblema : string,
         public dodijeliTehnicaru : boolean,
-        
     //za menadzera promjena
         public isChange : boolean
 
