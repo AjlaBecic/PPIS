@@ -1,0 +1,21 @@
+<div class="main-div">
+  <div class="group-box m-3">
+    <div class="row">
+      <div class="col-sm-2"><span>Filter:</span></div>
+        <div class="col-sm-8"><div class="input-group">
+          <input  [(ngModel)]="selectedCriteria" type="text" class="form-control" placeholder="{{selectedCriteria}}" readonly>
+          
+          <div class="input-drop input-group-btn">
+            <div class="dropdown" appDropdownDirective>
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li *ngFor="let criteria of criteriaList" name="criteria" (click)="selectCriteria(criteria)">{{ criteria }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="chartdiv"></div>
+</div>

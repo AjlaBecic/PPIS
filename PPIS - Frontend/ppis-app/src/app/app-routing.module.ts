@@ -18,6 +18,8 @@ import { TechnicianrequestComponent } from './components/technician/technicianre
 import { DocumentationComponent } from './components/documentation/documentation.component';
 import { ActivityComponent } from './components/activity/activity.component';
 import { NewactivityComponent } from './components/activities/newactivity/newactivity.component';
+import { AllActivitiesComponent } from './components/activities/all-activities/all-activities.component';
+import { VisualRepresentationComponent } from './components/visual-representation/visual-representation.component';
 
 const routes : Routes = [
   {path : 'login', component : LoginComponent},
@@ -38,7 +40,9 @@ const routes : Routes = [
       {path : 'problems', component : TechnicianrequestsComponent},
       {path : 'problem/:id', component : ManagerproblemComponent},
       {path : 'problem/:id/activities', component : ActivityComponent},
-      {path : 'problem/:id/activities/new', component : NewactivityComponent}
+      {path : 'problem/:id/activities/all', component : AllActivitiesComponent},
+      {path : 'problem/:id/activities/new', component : NewactivityComponent},
+      {path : 'problems/visualrepresentation', component : VisualRepresentationComponent}
 
     ]
   },

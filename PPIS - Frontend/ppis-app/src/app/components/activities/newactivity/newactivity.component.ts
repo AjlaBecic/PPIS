@@ -43,7 +43,7 @@ export class NewactivityComponent implements OnInit {
     });
   }
 
-  submit() {
+  onSubmit() {
     this.submitted = true;
     if (!this.activityForm.valid)
       return;

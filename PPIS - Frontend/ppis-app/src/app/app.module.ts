@@ -25,6 +25,8 @@ import { TechnicianhomeComponent } from './components/technician/technicianhome/
 import { TechnicianrequestsComponent } from './components/technician/technicianrequests/technicianrequests.component';
 import { TechnicianrequestComponent } from './components/technician/technicianrequest/technicianrequest.component';
 import { NewactivityComponent } from './components/activities/newactivity/newactivity.component';
+import { AllActivitiesComponent } from './components/activities/all-activities/all-activities.component';
+import { VisualRepresentationComponent } from './components/visual-representation/visual-representation.component';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { NewactivityComponent } from './components/activities/newactivity/newact
     NewactivityComponent,
     TechnicianhomeComponent,
     TechnicianrequestsComponent,
-    TechnicianrequestComponent
+    TechnicianrequestComponent,
+    AllActivitiesComponent,
+    VisualRepresentationComponent
   ],
   imports: [
     BrowserModule,

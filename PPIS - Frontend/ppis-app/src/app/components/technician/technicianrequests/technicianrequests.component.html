@@ -2,13 +2,50 @@
   <div class="m-2">
     <h3 class="header">All problems</h3>
   </div>
-  <div class="w-100" *ngFor="let problem of problems">
-    <div class="container-fluid problem-div">
+  <div class="group-box">
+    <div class="row">
+      <div class="col-sm-2 ml-5"><span>Filter:</span></div>
+        <div class="col-sm-4"><div class="input-group">
+          <input  [(ngModel)]="selectedCriteria" type="text" class="form-control" placeholder="{{selectedCriteria}}" readonly>
+          <div class="input-drop input-group-btn">
+            <div class="dropdown" appDropdownDirective>
+              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+                <li *ngFor="let criteria of criteriaList" name="criteria" (click)="selectCriteria(criteria)">{{ criteria }}</li>
+              </ul>
+            </div>
+          </div>
+          </div>
+        </div>
+          <div *ngIf="selectedCriteriaIndex != -1" class="col-sm-4"><div class="input-group">
+            <input  [(ngModel)]="selectedCriteriaValue" type="text" class="form-control" placeholder="{{selectedCriteraValue}}" readonly>
+            <div class="input-drop input-group-btn">
+              <div class="dropdown" appDropdownDirective>
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li *ngFor="let value of valueList[selectedCriteriaIndex]" name="value" (click)="selectCriteriaValue(value)">{{ value }}</li>
+                </ul>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    </div>
+   
+  <div class="w-100" *ngFor="let problem of filteredProblems">
+    <div [ngClass]="{'container-fluid' : true, 'problem-div' : true, 'low' : problem.priority === 'Nizak', 'medium' : problem.priority === 'Srednji', 'height' : problem.priority === 'Visok'}">
       <div class="row ml-2">
         <h4>{{problem.title}}</h4>
       </div>
       <div class="row ml-3">
-        <p>Author: {{problem.user.userName}}</p>
+        <div class="col-sm-6">
+            <p>Author: {{problem.user.userName}}</p>
+        </div>
+        <div class="col-sm-6">
+            <p>Status: {{problem.status}}</p>
+        </div>
       </div>
       <div class="row text-center">
         <button routerLink="/technician/problem/{{problem.id}}" class="my-button m-2">Open problem</button>

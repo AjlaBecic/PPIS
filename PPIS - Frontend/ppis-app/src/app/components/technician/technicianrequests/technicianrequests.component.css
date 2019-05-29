@@ -16,10 +16,23 @@
   display: block;
 }
 
-.problem-div {
+.problem-div, .low, .medium, .height {
   border-radius: 12px;
-  background-color: aliceblue;
   margin: 2%;
   width: 96%;
 }
+
+.low {
+  background-color:#ffff99;
+}
+
+.medium {
+ background-color: #ffcccc;
+}
+
+.height {
+  background-color: #ccffff;
+}
+
+
 

@@ -11,6 +11,7 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "resolveJsonModule": true,
+    "downlevelIteration": true,
     "esModuleInterop": true,
     "target": "es5",
     "typeRoots": [

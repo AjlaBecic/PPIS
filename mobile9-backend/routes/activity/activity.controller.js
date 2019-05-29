@@ -21,3 +21,5 @@ const ActivityController = (() => {
         newActivity : newActivity
     }
 })();
+
+module.exports = ActivityController;

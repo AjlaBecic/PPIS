@@ -26,7 +26,7 @@ export class ManagerproblemComponent implements OnInit {
   statusList = ["Novi problem (ceka validaciju)", "Planiranje u toku", "Trazenje izvornog uzroka u toku",
             "Traženje privremenog rjesenja u toku", "Trazenje trajnog rjesenja u toku", "Predlozena promjena",
             "Promjene u toku", "Zatvoreno", "Promjena nije prihvacena"];
-  priorityList = ["Nizak", "Visok"];
+  priorityList = ["Nizak", "Srednji", "Visok"];
   categoryList = ["Istraživanje", "Softver", "Hardver", "Mreža"];
   groupList = [
     /*new Group("Grupa 1", ["Ajla Bećić", "Maid Bajramović"], ""), new Group("Grupa 2", ["Amera Alić", "Rasim Šabanović"], ""),
