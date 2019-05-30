@@ -8,7 +8,7 @@ import { MainComponentComponent } from './components/main-component/main-compone
 import { DropdownDirectiveDirective } from './directives/dropdown-directive.directive';
 import { DocumentationComponent } from './components/documentation/documentation.component';
 import { ActivityComponent } from './components/activity/activity.component';
-import { ChangeManagementComponent } from './components/change-management/change-management.component';
+
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RemoveHost } from './directives/remove-host.directive';
@@ -29,6 +29,16 @@ import { AllActivitiesComponent } from './components/activities/all-activities/a
 import { VisualRepresentationComponent } from './components/visual-representation/visual-representation.component';
 
 
+import { CmanagerhomeComponent } from './components/cmanager/cmanagerhome/cmanagerhome.component';
+import { CmanagerchangeComponent } from './components/cmanager/cmanagerchange/cmanagerchange.component';
+import { CmanagerchangesComponent } from './components/cmanager/cmanagerchanges/cmanagerchanges.component';
+
+import { BoardhomeComponent } from './components/board/boardhome/boardhome.component';
+import { BoardchangesComponent } from './components/board/boardchanges/boardchanges.component';
+import { BoardchangeComponent } from './components/board/boardchange/boardchange.component';
+import { ClientmyrequestsComponent } from './components/clients/clientmyrequests/clientmyrequests.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +46,6 @@ import { VisualRepresentationComponent } from './components/visual-representatio
     DropdownDirectiveDirective,
     DocumentationComponent,
     ActivityComponent,
-    ChangeManagementComponent,
     LoginComponent,
     RemoveHost,
     ClienthomeComponent,
@@ -53,7 +62,15 @@ import { VisualRepresentationComponent } from './components/visual-representatio
     TechnicianrequestsComponent,
     TechnicianrequestComponent,
     AllActivitiesComponent,
-    VisualRepresentationComponent
+    VisualRepresentationComponent,
+
+    CmanagerhomeComponent,
+    CmanagerchangeComponent,
+    CmanagerchangesComponent,
+    BoardhomeComponent,
+    BoardchangesComponent,
+    BoardchangeComponent,
+    ClientmyrequestsComponent
   ],
   imports: [
     BrowserModule,

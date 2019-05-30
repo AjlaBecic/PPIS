@@ -1,0 +1,25 @@
+<div class="main-div">
+  <div class="container-flud ml-5">
+    <div class="row">
+      <h3 class="header ml-3">{{change.title}}</h3>
+    </div>
+    <div class="row">
+      <p class="mt-2 ml-2">{{change.description}}</p>
+    </div>
+    <div class="row">
+      <p class="mt-2 ml-2"> Priority: {{change.priority}} </p>
+    </div>
+    <div class="row">
+      <p class="mt-2 ml-2"> Status: {{change.status}}</p>
+    </div>
+    <div class="row">
+      <p class="mt-2 ml-2"> Category: {{change.category}}</p>
+    </div>
+
+
+    <div class="row">
+      <button class="my-button" (click)="markAsApproved()">Approve</button>
+    </div>
+
+  </div>
+</div>

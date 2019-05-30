@@ -13,15 +13,15 @@ const Problem = db.define('problem', {
     status : Sequelize.STRING,
     isProblem : Sequelize.BOOLEAN,
     processed : Sequelize.BOOLEAN,
-    category : Sequelize.STRING
+   
     //ovo je novo
-    /*category : Sequelize.STRING,
-    grupa : Sequelize.STRING,
-    representative : Sequelize.STRING,
-    opisProblema : Sequelize.STRING,
-    dodijeliTehnicaru : Sequelize.BOOLEAN,
+    category : Sequelize.STRING,
+    //grupa : Sequelize.STRING,
+    //representative : Sequelize.STRING,
+    //opisProblema : Sequelize.STRING,
+    //dodijeliTehnicaru : Sequelize.BOOLEAN,
     //za menadzera promjena
-    isChange : Sequelize.BOOLEAN*/
+    isChange : Sequelize.BOOLEAN
     
 });
 
@@ -36,15 +36,15 @@ Problem.newProblem = function(problem, fn) {
         userId : problem.user.id,
         isProblem : problem.isProblem,
         processed : false,
-        category : ''
+        category : '',
 
-        /*category : problem.category,
-        grupa : problem.grupa,
-        representative : problem.representative,
-        opisProblema : problem.opisProblema,
-        dodijeliTehnicaru : problem.dodijeliTehnicaru,
+        //category : problem.category,
+        //grupa : problem.grupa,
+        //representative : problem.representative,
+        //opisProblema : problem.opisProblema,
+        //dodijeliTehnicaru : problem.dodijeliTehnicaru,
         //za menadzera promjena
-        isChange : problem.isChange*/
+        isChange : problem.isChange
     })
     .then(problem => {
         return fn('yes', Responses.OK(problem));
@@ -95,6 +95,22 @@ Problem.assignSolution = function(problemId, solutionId, fn) {
 Problem.markAsProblem = function(problemId, fn) {
     Problem.update({
         isProblem : true
+    },
+    {
+        where : {
+            id : problemId
+        }
+    })
+    .then(updated => {
+        return fn('yes', Responses.OK('Successfully updated.'));
+    })
+    .catch(error => {
+        return fn(null, Responses.NOK(error.message));
+    });
+}
+Problem.markAsChange = function(problemId, fn) {
+    Problem.update({
+        isChange : true
     },
     {
         where : {

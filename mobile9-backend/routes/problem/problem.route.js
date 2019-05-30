@@ -21,4 +21,7 @@ ProblemRouter.get('/documentation', ProblemController.getDocumentation);
 ProblemRouter.get('/forTech', ProblemController.getProblemsForTech);
 ProblemRouter.get('/forChange', ProblemController.getProblemsForChange);
 
+ProblemRouter.put('/markChange', ProblemController.markAsChange);
+ProblemRouter.get('/myrequests', ProblemController.getMyRequests);
+
 module.exports = ProblemRouter;

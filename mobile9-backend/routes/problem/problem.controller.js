@@ -30,6 +30,13 @@ const ProblemController = (() => {
         });
     };
 
+    const markAsChange = (req, res) => {
+        var problemId = req.body.problemId;
+        Problem.markAsChange(problemId, function(success, data) {
+            res.end(JSON.stringify(data));
+        });
+    };
+
     const closed = (req, res) => {
         var problemId = req.body.problemId;
         Problem.closed(problemId, function(success, data) {
@@ -69,6 +76,12 @@ const ProblemController = (() => {
         });
     }
 
+    const getMyRequests = (req, res) => {
+        var id = req.query.id;
+        Problem.getMyRequests(id, function(success, data) {
+            res.end(JSON.stringify(data));
+        });
+    }
 
     const getNewProblems = (req, res) => {
         Problem.getNewProblems(function(success, data) {
@@ -81,7 +94,7 @@ const ProblemController = (() => {
             res.end(JSON.stringify(data));
         });
     }
-
+    
     const getProcessedProblems = (req, res) => {
         Problem.getProcessedProblems(function(success, data) {
             res.end(JSON.stringify(data));
@@ -139,7 +152,12 @@ const ProblemController = (() => {
         getProblemsTech : getProblemsTech,
         closed : closed,
         done : done,
-        progress : progress
+        progress : progress,
+        markAsChange : markAsChange,
+        getMyRequests : getMyRequests
+
+
+
     }
 })();
 

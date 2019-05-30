@@ -8,6 +8,7 @@ import { first, filter } from 'rxjs/operators';
 import { GroupService } from 'src/app/services/group.service';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
+import { Change } from 'src/app/models/change';
 
 @Component({
   selector: 'app-managerproblem',
@@ -17,6 +18,7 @@ import { UserService } from 'src/app/services/user.service';
 
 export class ManagerproblemComponent implements OnInit {
   request : Problem;
+  change : Change;
   selectedStatus: string;
   selectedPriority: string;
   selectedCategory: string;
@@ -30,7 +32,8 @@ export class ManagerproblemComponent implements OnInit {
   categoryList = ["Istraživanje", "Softver", "Hardver", "Mreža"];
   groupList = [
     /*new Group("Grupa 1", ["Ajla Bećić", "Maid Bajramović"], ""), new Group("Grupa 2", ["Amera Alić", "Rasim Šabanović"], ""),
-    new Group("Grupa 3", ["Mirza Mesihović", "Dejan Aćimović"], ""), new Group("Grupa 4", ["Amar Burić", "Irhad Halilović"], ""),*/
+    new Group("Grupa 3", ["Mirza Mesihović", "Dejan Aćimović"], ""), new Group("Grupa 4", ["Amar Burić", "Irhad Halilović"], ""),
+  */
   ];
 
   currentProblem : Problem;
@@ -51,7 +54,7 @@ export class ManagerproblemComponent implements OnInit {
     .pipe(first())
     .subscribe(response => {
       console.log(response);
-      if (response.statusCode == 200) 
+      if (response.statusCode == 200)
         this.groupList = response.data;
       this.requestService.getProblem(id)
       .pipe(first())
@@ -80,8 +83,8 @@ export class ManagerproblemComponent implements OnInit {
       console.log(response);
     });
   }
-
-  /*dodijeliTehnicaru() {
+/*
+  dodijeliTehnicaru() {
     //alert( this.route.snapshot.paramMap.get("id"));
 
     this.requestService.dodijeliTehnicaru( this.route.snapshot.paramMap.get("id"))
@@ -95,8 +98,8 @@ export class ManagerproblemComponent implements OnInit {
       }
     });
 
-  }*/
-
+  }
+*/
   selectStatus(value: any){
     this.currentProblem.status = value;
   }

@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<div class="main-div">
+    <div class="m-2">
+      <h3 class="header">My requests</h3>
+    </div>
+    <div class="w-100" *ngFor="let request of requests">
+      <div class="container-fluid request-div">
+        <div class="row ml-2">
+          <h4>{{request.title}}</h4>
+        </div>
+
+          <div class="row text-center">
+            <p>Status {{request.status}}</p>
+          </div>
+
+      </div>
+    </div>
+  </div>
