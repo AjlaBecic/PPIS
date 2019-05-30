@@ -113,27 +113,28 @@
   </div>
 </div>--->
 
-<div class="row mt-2 text-center w-100">
+<div *ngIf="filter !== 'change'" class="row mt-5 text-center w-100">
   <div class="col-sm-12">
     <button class="my-button" (click)="save()">Save changes</button>
   </div>
 </div>
+<div *ngIf="filter === 'change'" class="row mt-5 text-center w-100">
+  <div class="col-sm-12">
+    <button class="my-button" (click)="save()">Forward to Change Management</button>
+  </div>
+</div>
 
-<div class="row mt-3 text-center w-100">
-  <div class="col-sm-5">
-    <button *ngIf="currentProblem != null && currentUser.role=='manager'" routerLink="/manager/problem/{{currentProblem.id}}/documentation" class="my-button">Documentation</button>
-    <button *ngIf="currentUser.role=='technician'" routerLink="/technician/problem/{{currentProblem.id}}/documentation" class="my-button">Documentation</button>
+<div class="row mt-5 text-center w-100">
+  <div class="col-sm-4">
+    <button *ngIf="currentProblem != null && currentUser.role=='manager'" routerLink="/manager/problem/{{currentProblem.id}}/documentation" class="fill-button">Problem Documentation</button>
+    <button *ngIf="currentUser.role=='technician'" routerLink="/technician/problem/{{currentProblem.id}}/documentation" class="fill-button">Problem Documentation</button>
   </div>
-</div>
-<div class="row mt-2 text-center w-100">
-  <div class="col-sm-5">
-      <button *ngIf="currentUser.role=='manager'" routerLink="/manager/problem/{{currentProblem.id}}/activities" class="my-button">Activities</button>
-      <button *ngIf="currentUser.role=='technician'" routerLink="/technician/problem/{{currentProblem.id}}/activities" class="my-button">Activities</button>
+  <div class="col-sm-4">
+    <button *ngIf="currentUser.role=='manager'" routerLink="/manager/problem/{{currentProblem.id}}/activities" class="fill-button">Problem Activities</button>
+    <button *ngIf="currentUser.role=='technician'" routerLink="/technician/problem/{{currentProblem.id}}/activities" class="fill-button">Problem Activities</button>
   </div>
-</div>
-<div class="row mt-2 text-center w-100">
-  <div class="col-sm-5">
-    <button class="my-button">History</button>
+  <div class="col-sm-4">
+    <button class="fill-button">Problem History</button>
   </div>
 </div>
 </div>

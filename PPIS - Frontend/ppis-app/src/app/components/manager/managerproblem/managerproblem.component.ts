@@ -4,7 +4,7 @@ import { Group } from 'src/app/models/group';
 import { ActivatedRoute } from '@angular/router';
 import { Problem } from 'src/app/models/problem';
 import { RequestService } from 'src/app/services/request.service';
-import { first } from 'rxjs/operators';
+import { first, filter } from 'rxjs/operators';
 import { GroupService } from 'src/app/services/group.service';
 import { User } from 'src/app/models/user';
 import { UserService } from 'src/app/services/user.service';
@@ -35,6 +35,7 @@ export class ManagerproblemComponent implements OnInit {
 
   currentProblem : Problem;
   currentUser : User;
+  filter : string;
 
   constructor(
     private route : ActivatedRoute,
@@ -64,6 +65,7 @@ export class ManagerproblemComponent implements OnInit {
 
   ngOnInit() {
     this.getProblem(this.route.snapshot.paramMap.get('id'));
+    this.filter = this.route.snapshot.paramMap.get('filter');
     this.selectedTab = 0;
     var id = this.route.snapshot.paramMap.get("id");
     this.requestService.getRequest(id);

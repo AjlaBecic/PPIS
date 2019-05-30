@@ -117,4 +117,11 @@ export class RequestService {
       return response;
     }));
   }
+
+  getProblemsForChange() {
+    return this.http.get<any>(`${config.api.url}/problem/forChange`)
+    .pipe(map(response => {
+      return response;
+    }));
+  }
 }

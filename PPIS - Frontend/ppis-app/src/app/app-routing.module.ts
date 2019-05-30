@@ -51,7 +51,8 @@ const routes : Routes = [
       {path : 'problems/:filter', component : ManagerproblemsComponent},
       {path : 'problem/:id', component : ManagerproblemComponent},
       {path : 'problem/:id/documentation', component : DocumentationComponent},
-      {path : 'problem/:id/activities', component : ActivityComponent}
+      {path : 'problem/:id/activities', component : ActivityComponent},
+      {path : 'problem/:id/:filter', component : ManagerproblemComponent}
     ]
   }
 ];

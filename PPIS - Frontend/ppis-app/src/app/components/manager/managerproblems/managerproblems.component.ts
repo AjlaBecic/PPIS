@@ -34,13 +34,22 @@ export class ManagerproblemsComponent implements OnInit {
           console.log(this.problems);
       });
     }
-    else {
+    else if (this.filter === 'new') {
       this.requestService.getNewProblems()
       .pipe(first())
       .subscribe(response => {
         if (response.statusCode == 200)
           this.problems = response.data;
           console.log(this.problems);
+      });
+    }
+    else if (this.filter === 'change') {
+      this.requestService.getProblemsForChange()
+      .pipe(first())
+      .subscribe(response => {
+        if (response.statusCode == 200)
+          this.problems = response.data;
+        console.log(this.problems);
       });
     }
   }

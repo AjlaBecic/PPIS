@@ -4,12 +4,12 @@
       <h3 class="header ml-3">{{request.title}}</h3>
     </div>
     <div class="row">
-      <p class="mt-2 ml-2">{{request.description}}</p>
+      <p class="mt-2 ml-2">Problem Description: {{request.description}}</p>
     </div>
     <div class="row">
       <p class="mt-2 ml-2">Author: {{request.user.firstName}} {{request.user.lastName}}</p>
     </div>
-    <div class="row">
+    <div class="row text-center">
       <button class="my-button" (click)="markAsProblem()">Mark as problem</button>
     </div>
   </div>

@@ -116,6 +116,12 @@ const ProblemController = (() => {
         });
     }
 
+    const getProblemsForChange = (req, res) => {
+        Problem.getProblemsForChange(function(success, data) {
+            res.end(JSON.stringify(data));
+        });
+    }
+
     return {
         newProblem : newProblem,
         markAsProblem : markAsProblem,
@@ -127,6 +133,7 @@ const ProblemController = (() => {
         updateProblem : updateProblem,
         getDocumentation : getDocumentation,
         getProblemsForTech : getProblemsForTech,
+        getProblemsForChange : getProblemsForChange,
 
         dodijeliTehnicaru: dodijeliTehnicaru,
         getProblemsTech : getProblemsTech,

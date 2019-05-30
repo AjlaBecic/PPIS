@@ -204,6 +204,23 @@ Problem.getProblemsForTech = function(groupId, fn) {
     });
 }
 
+Problem.getProblemsForChange = function(fn) {
+    Problem.findAll({
+        include : [
+            {model : User, as: 'user'}
+        ],
+        where : {
+            status : 'Predlozena promjena'
+        }
+    })
+    .then(problems => {
+        return fn('yes', Responses.OK(problems));
+    })
+    .catch(error => {
+        return fn(null, Responses.NOK(error));
+    });
+}
+
 Activity.getActivites = function(problemId, fn) {
     Activity.findAll({
         include : [
