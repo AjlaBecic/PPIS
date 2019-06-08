@@ -2,7 +2,7 @@
     "database" : {
         "name" : "mobile9",
         "user" : "root",
-        "password" : "root",
+        "password" : "",
         "dialect" : "mysql",
         "host" : "localhost",
         "port" : 3306

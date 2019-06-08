@@ -8,7 +8,7 @@
         <h4>{{request.title}}</h4>
       </div>
       <div class="row ml-3">
-        <p>Author: {{request.user.userName}}</p>
+        <p>Author: {{request.user.firstName}} {{request.user.lastName}}</p>
       </div>
       <div class="row text-center">
         <button routerLink="/admin/request/{{request.id}}" class="my-button m-2">Open request</button>

@@ -37,6 +37,7 @@ import { BoardchangesComponent } from './components/board/boardchanges/boardchan
 import { BoardchangeComponent } from './components/board/boardchange/boardchange.component';
 import { ClientmyrequestsComponent } from './components/clients/clientmyrequests/clientmyrequests.component';
 import { TechnicianChangesComponent } from './components/technician/technician-changes/technician-changes.component';
+import { StatisticalViewComponent } from './components/manager/statistical-view/statistical-view.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { TechnicianChangesComponent } from './components/technician/technician-c
     BoardchangesComponent,
     BoardchangeComponent,
     ClientmyrequestsComponent,
-    TechnicianChangesComponent
+    TechnicianChangesComponent,
+    StatisticalViewComponent
   ],
   imports: [
     BrowserModule,

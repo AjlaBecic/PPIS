@@ -1,12 +1,3 @@
-.input-drop{
-    width: 11%;
-}
-
-
-h1, .row, p{
-    margin-left: 5%
-}
-
 .main-div {
     height: 94%;
     background: #ffffff;
@@ -16,17 +7,9 @@ h1, .row, p{
     margin-bottom: 2%;
     overflow: scroll;
     display: block;
-}
+  }
 
-
-.my-header {
-    color: blue;
-}
-
-.fill-button {
-    background: blue;
-    color : white;
+  #chartdiv {
     width: 100%;
-    height: 80px;
-    border: none;
-}
+    height: 500px;
+  }

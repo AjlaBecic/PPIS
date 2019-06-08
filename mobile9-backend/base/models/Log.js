@@ -3,11 +3,12 @@ const db = require('../base-connect');
 
 const Log = db.define('log3', {
     activity : Sequelize.STRING,
-    problem: Sequelize.INTEGER
+    problem: Sequelize.INTEGER,
+    department : Sequelize.STRING
 });
 
-Log.saveNewLog = (activity, problemId) => {
-    Log.create({activity:activity, problem: problemId});
+Log.saveNewLog = (activity, department, problemId) => {
+    Log.create({activity:activity, problem: problemId, department : department});
 }
 
 Log.returnAllLogsByProblemId = (id, fn) => {

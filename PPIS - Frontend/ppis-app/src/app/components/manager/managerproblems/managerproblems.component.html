@@ -11,13 +11,12 @@
         <h4>{{problem.title}}</h4>
       </div>
       <div class="row ml-3">
-        <p>Author: {{problem.user.userName}}</p>
+        <p>Author: {{problem.user.firstName}} {{problem.user.lastName}}</p>
       </div>
-      <div class="row ml-3">
-        <p>Status: {{problem.status}}</p>
-      </div>
+   
       <div class="row text-center">
         <button  *ngIf="filter !== 'change'" routerLink="/manager/problem/{{problem.id}}" class="my-button m-2">Open problem</button>
+        <button class="my-button m-2" routerLink="/manager/problem/{{problem.id}}/statisticalview">Statistical details</button>
         <button  *ngIf="filter === 'change'" routerLink="/manager/problem/{{problem.id}}/change" class="my-button m-2">Open problem</button>
       </div>
     </div>

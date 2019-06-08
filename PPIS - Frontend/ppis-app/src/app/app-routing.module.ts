@@ -28,6 +28,7 @@ import { BoardhomeComponent } from './components/board/boardhome/boardhome.compo
 import { BoardchangesComponent } from './components/board/boardchanges/boardchanges.component';
 import { BoardchangeComponent } from './components/board/boardchange/boardchange.component';
 import { TechnicianChangesComponent } from './components/technician/technician-changes/technician-changes.component';
+import { StatisticalViewComponent } from './components/manager/statistical-view/statistical-view.component';
 
 const routes : Routes = [
   {path : 'login', component : LoginComponent},
@@ -61,6 +62,7 @@ const routes : Routes = [
       {path : 'problems/:filter', component : ManagerproblemsComponent},
       {path : 'problem/:id', component : ManagerproblemComponent},
       {path : 'problem/:id/documentation', component : DocumentationComponent},
+      {path : 'problem/:id/statisticalview', component : StatisticalViewComponent},
       {path : 'problem/:id/activities', component : ActivityComponent},
       {path : 'problem/:id/:filter', component : ManagerproblemComponent}
     ]

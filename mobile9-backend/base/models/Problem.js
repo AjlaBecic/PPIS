@@ -97,7 +97,7 @@ Problem.updateProblem = function(problem, fn) {
 
 
             logList.forEach(element => {
-                Log.saveNewLog(element, problem.id);
+                Log.saveNewLog(element, "Problem Management", problem.id);
             });
 
             Solution.updateSolution(problem.solution);
