@@ -1,6 +1,7 @@
 const db = require('../../base/base-connect.js');
 
 const { Problem, Solution } = db.import('../../base/models/Relations.js');
+const Log = db.import('../../base/models/Log.js');
 
 const ProblemController = (() => {
     const newProblem = (req, res) => {
@@ -23,9 +24,23 @@ const ProblemController = (() => {
         });
     };
 
+    const getLogs = (req, res) => {
+        var problemId = req.query.id;
+         Log.returnAllLogsByProblemId(problemId, (data)=>{
+             res.end(JSON.stringify(data));
+         });
+    }
+
     const markAsProblem = (req, res) => {
         var problemId = req.body.problemId;
         Problem.markAsProblem(problemId, function(success, data) {
+            res.end(JSON.stringify(data));
+        });
+    };
+    
+    const markAsChange = (req, res) => {
+        var problemId = req.body.problemId;
+        Problem.markAsChange(problemId, function(success, data) {
             res.end(JSON.stringify(data));
         });
     };
@@ -69,6 +84,12 @@ const ProblemController = (() => {
         });
     }
 
+    const getMyRequests = (req, res) => {
+        var id = req.query.id;
+        Problem.getMyRequests(id, function(success, data) {
+            res.end(JSON.stringify(data));
+        });
+    }
 
     const getNewProblems = (req, res) => {
         Problem.getNewProblems(function(success, data) {
@@ -134,12 +155,15 @@ const ProblemController = (() => {
         getDocumentation : getDocumentation,
         getProblemsForTech : getProblemsForTech,
         getProblemsForChange : getProblemsForChange,
+        getLogs: getLogs,
 
         dodijeliTehnicaru: dodijeliTehnicaru,
         getProblemsTech : getProblemsTech,
         closed : closed,
         done : done,
-        progress : progress
+        progress : progress,
+        markAsChange : markAsChange,
+        getMyRequests : getMyRequests
     }
 })();
 

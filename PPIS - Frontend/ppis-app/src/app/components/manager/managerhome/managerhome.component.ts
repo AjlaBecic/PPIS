@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./managerhome.component.css']
 })
 export class ManagerhomeComponent implements OnInit {
-  private currentUser : User;
+  currentUser : User;
   constructor(
     private userService : UserService,
     private router : Router
-  ) { 
+  ) {
     this.userService.currentUser.subscribe(x => this.currentUser = x);
   }
 

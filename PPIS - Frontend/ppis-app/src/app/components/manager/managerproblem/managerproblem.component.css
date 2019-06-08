@@ -14,7 +14,7 @@ h1, .row, p{
     border-radius: 12px;
     margin-top: 2%;
     margin-bottom: 2%;
-    overflow: scroll;
+    overflow: hidden;
     display: block;
 }
 

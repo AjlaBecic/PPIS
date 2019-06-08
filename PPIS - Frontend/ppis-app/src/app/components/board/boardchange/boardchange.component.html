@@ -1,0 +1,87 @@
+<div class="main-div">
+  <div class="container-flud ml-5">
+    <div class="row">
+      <h3 class="header ml-3">{{change?.title}}</h3>
+    </div>
+    <div class="row">
+      <p class="mt-2 ml-2">{{change?.description}}</p>
+    </div>
+    <div class="group-box">
+      <div class="row">
+        <div class="col-sm-2"><span>Status:</span></div>
+          <div class="col-sm-7"><div class="input-group">
+            <input *ngIf="change != null" [(ngModel)]="selectedStatus" type="text" class="form-control" placeholder="{{change.status}}" readonly>
+            <input *ngIf="change == null" [(ngModel)]="selectedStatus" type="text" class="form-control"  readonly>
+            <div class="input-drop input-group-btn">
+              <div class="dropdown" appDropdownDirective>
+                <button class="btn btn-primary " type="button" data-toggle="dropdown">
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li *ngFor="let status of statusList" name="status" (click)="selectStatus(status)">{{ status }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-2">
+        <div class="col-sm-2"><span>Priority:</span></div>
+          <div class="col-sm-7"><div class="input-group">
+            <input *ngIf="change != null" [(ngModel)]="change.priority" type="text" class="form-control" placeholder="{{ change.priority }}" readonly>
+            <input *ngIf="change == null" type="text" class="form-control" readonly>
+            <div class="input-drop input-group-btn">
+              <div class="dropdown" appDropdownDirective>
+                <button class="btn btn-primary " type="button" data-toggle="dropdown">
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li *ngFor="let priority of priorityList" (click)="selectPriority(priority)">{{ priority }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-box mt-3">
+      <div class="row">
+        <div class="col-sm-2"><span>Category:</span></div>
+          <div class="col-sm-7"><div class="input-group">
+            <input *ngIf="change!=null" [(ngModel)]="change.category" type="text" class="form-control" placeholder="{{ change.category }}" readonly>
+            <input *ngIf="change==null" type="text" class="form-control"  readonly>
+            <div class="input-drop input-group-btn">
+              <div class="dropdown" appDropdownDirective>
+                <button class="btn btn-primary " type="button" data-toggle="dropdown">
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                  <li *ngFor="let category of categoryList" (click)="selectCategory(category)">{{ category }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-2"><span>Notice:</span></div>
+          <div class="col-sm-7"><div class="input-group">
+            <textarea style="resize:none; width:100%;margin-top:5px; background-color: #EEEEEE" class="form-control"></textarea>
+          </div>
+        </div>
+      </div>
+
+    <div class="my-div">
+      <div style = "margin-top: 2em" class="row center-button">
+        <button class="my-button" (click)="markAsApproved()">Approve</button>
+      </div>
+      <div style = "margin-top: 2em" class="row center-button">
+        <button class="my-button">Forward to Financial Management</button>
+      </div>
+      <div style = "margin-top: 2em" class="row center-button">
+        <button class="my-button">Forward to Human Resources Management</button>
+      </div>
+      </div>
+
+  </div>
+</div>

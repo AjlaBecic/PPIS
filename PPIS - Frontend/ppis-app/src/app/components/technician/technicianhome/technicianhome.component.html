@@ -4,11 +4,19 @@
       <div class="my-div">
         <ul class="p-0 m-0">
           <li>
-            <ul class="p-0">
+            <ul class="p-3">
               <li class="li-header text-left">Problems</li>
               <li>
                 <a routerLink="/technician/problems">All problems</a>
                 <a routerLink="/technician/problems/visualrepresentation">Visual representation</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <ul class="p-3">
+              <li class="li-header text-left">Changes</li>
+              <li>
+                <a routerLink="/technician/changes">All changes</a>
               </li>
             </ul>
           </li>
@@ -23,7 +31,7 @@
     </div>
     <div class="col-sm-2 h-100">
       <div class="my-div">
-          <ul class="p-0">
+          <ul class="p-3">
               <li class="li-header text-left">First name:</li>
               <li class="ml-1">{{currentUser.firstName}}</li>
               <li class="li-header text-left">Last name:</li>

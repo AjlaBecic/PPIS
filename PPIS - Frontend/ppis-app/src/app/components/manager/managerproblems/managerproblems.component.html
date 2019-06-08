@@ -6,7 +6,7 @@
 
   </div>
   <div class="w-100" *ngFor="let problem of problems">
-    <div class="container-fluid problem-div">
+    <div [ngClass]="{'container-fluid' : true, 'problem-div' : true, 'low' : problem.priority === 'Nizak', 'medium' : problem.priority === 'Srednji', 'height' : problem.priority === 'Visok'}">
       <div class="row ml-2">
         <h4>{{problem.title}}</h4>
       </div>

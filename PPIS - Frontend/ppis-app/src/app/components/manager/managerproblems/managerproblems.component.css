@@ -10,9 +10,26 @@
     background: #ffffff;
     opacity: 0.9;
     border-radius: 12px;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    overflow: scroll;
+    margin-top : 0%;
+    margin-bottom: 3%;
+    overflow: none;
     display: block;
 }
+
+.h3 {
+  margin-top: 0px !important;
+}
+
+.low {
+  background-color:#ffff99;
+}
+
+.medium {
+ background-color: #ffcccc;
+}
+
+.height {
+  background-color: #ccffff;
+}
+
 

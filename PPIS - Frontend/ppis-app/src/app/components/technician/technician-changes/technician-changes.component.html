@@ -1,0 +1,15 @@
+<div class="main-div">
+  <div class="w-100" *ngFor="let change of changes">
+    <div class="container-fluid problem-div">
+      <div class="row ml-2">
+        <h4>{{change.title}}</h4>
+      </div>
+      <div class="row ml-3">
+        <p>Opis: {{change.description}}</p>
+      </div>
+      <div class="row text-center">
+        <button routerLink="/cmanager/change/{{change.id}}" class="my-button m-2">Open change</button>
+      </div>
+    </div>
+  </div>
+</div>

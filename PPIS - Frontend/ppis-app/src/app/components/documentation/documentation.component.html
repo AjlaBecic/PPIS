@@ -2,26 +2,22 @@
   <table *ngIf="currentProblem != null" class="table">
     <tbody>
       <tr>
-        <td><h6>Problem</h6></td>
-        <td colspan="3"><h6>{{currentProblem.title}}</h6></td>
-      </tr>
-      <tr>
         <td><h6>Opis</h6></td>
-        <td><h6><textarea [(ngModel)]="currentProblem.description" type="text" class="form-control" cols="13"></textarea></h6></td>
+        <td><h6><textarea style="resize: none" [(ngModel)]="currentProblem.description" type="text" class="form-control" cols="13"></textarea></h6></td>
         <td><h6>Scenario problema</h6></td>
-        <td><h6><textarea [(ngModel)]="currentProblem.solution.scenario" type="text" class="form-control" cols="13"></textarea></h6></td>
+        <td><h6><textarea style="resize: none" [(ngModel)]="currentProblem.solution.scenario" type="text" class="form-control" cols="13"></textarea></h6></td>
       </tr>
       <tr>
         <td><h6>Utiče na</h6></td>
-        <td><h6><textarea type="text" [(ngModel)]="currentProblem.consequences" class="form-control" cols="13"></textarea></h6></td>
+        <td><h6><textarea style="resize: none" type="text" [(ngModel)]="currentProblem.consequences" class="form-control" cols="13"></textarea></h6></td>
         <td><h6>Privremeno rješenje</h6></td>
-        <td><h6><textarea type="text" [(ngModel)]="currentProblem.solution.tempSolution" class="form-control" cols="13"></textarea></h6></td>
+        <td><h6><textarea style="resize: none" type="text" [(ngModel)]="currentProblem.solution.tempSolution" class="form-control" cols="13"></textarea></h6></td>
     </tr>
     <tr>
         <td><h6>Razlog problema</h6></td>
-        <td><h6><textarea type="text" [(ngModel)]="currentProblem.solution.reason" class="form-control" cols="13"></textarea></h6></td>
+        <td><h6><textarea style="resize: none" type="text" [(ngModel)]="currentProblem.solution.reason" class="form-control" cols="13"></textarea></h6></td>
         <td><h6>Trajno rješenje</h6></td>
-        <td><h6><textarea type="text" [(ngModel)]="currentProblem.solution.permSolution" class="form-control" cols="13"></textarea></h6></td>
+        <td><h6><textarea style="resize: none" type="text" [(ngModel)]="currentProblem.solution.permSolution" class="form-control" cols="13"></textarea></h6></td>
     </tr>
     </tbody>
   </table>

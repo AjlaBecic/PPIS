@@ -9,7 +9,7 @@
           <input  [(ngModel)]="selectedCriteria" type="text" class="form-control" placeholder="{{selectedCriteria}}" readonly>
           <div class="input-drop input-group-btn">
             <div class="dropdown" appDropdownDirective>
-              <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+              <button class="btn btn-primary " type="button" data-toggle="dropdown">
               <span class="caret"></span></button>
               <ul class="dropdown-menu">
                 <li *ngFor="let criteria of criteriaList" name="criteria" (click)="selectCriteria(criteria)">{{ criteria }}</li>
@@ -22,7 +22,7 @@
             <input  [(ngModel)]="selectedCriteriaValue" type="text" class="form-control" placeholder="{{selectedCriteraValue}}" readonly>
             <div class="input-drop input-group-btn">
               <div class="dropdown" appDropdownDirective>
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                <button class="btn btn-primary " type="button" data-toggle="dropdown">
                 <span class="caret"></span></button>
                 <ul class="dropdown-menu">
                   <li *ngFor="let value of valueList[selectedCriteriaIndex]" name="value" (click)="selectCriteriaValue(value)">{{ value }}</li>
@@ -33,7 +33,7 @@
       </div>
     </div>
     </div>
-   
+
   <div class="w-100" *ngFor="let problem of filteredProblems">
     <div [ngClass]="{'container-fluid' : true, 'problem-div' : true, 'low' : problem.priority === 'Nizak', 'medium' : problem.priority === 'Srednji', 'height' : problem.priority === 'Visok'}">
       <div class="row ml-2">

@@ -9,14 +9,15 @@ const Log = db.import(__dirname + '/Log.js');
 const Problem = db.import(__dirname + '/Problem.js');
 const Solution = db.import(__dirname + '/Solution.js');
 const User = db.import(__dirname + '/User.js');
+const Change = db.import(__dirname + '/Change.js');
 
 Problem.belongsTo(User);
 Problem.belongsTo(Group);
 Problem.belongsTo(Solution);
-//Problem.belongsTo(Status);
 
-Log.belongsTo(User);
-Log.belongsTo(Problem);
+Change.belongsTo(User);
+Change.belongsTo(Problem);
+Change.belongsTo(Solution);
 
 User.belongsTo(Group);
 
@@ -86,6 +87,26 @@ Problem.getNewProblems = function(fn) {
     });
 }
 
+Change.getNewChanges = function(fn) {
+    Change.findAll({
+        include : [
+           {
+               model : User, as : 'user'
+           }
+        ],
+        where : {
+            isChange : false
+            
+        }
+    })
+    .then(changes => {
+        return fn('yes', Responses.OK(changes));
+    })
+    .catch(error => {
+        return fn(null, Responses.NOK(error.message));
+    });
+}
+
 Problem.getProblemsTech = function(fn) {
     Problem.findAll({
         include : [
@@ -106,6 +127,25 @@ Problem.getProblemsTech = function(fn) {
     });
 }
 
+Change.getAllChanges = function(fn) {
+    Change.findAll({
+        include : [
+           {
+               model : User, as : 'user'
+           }
+        ],
+        where : {
+            isChange : true
+            
+        }
+    })
+    .then(changes => {
+        return fn('yes', Responses.OK(changes));
+    })
+    .catch(error => {
+        return fn(null, Responses.NOK(error.message));
+    });
+}
 
 Problem.getProcessedProblems = function(fn) {
     Problem.findAll({
@@ -221,6 +261,25 @@ Problem.getProblemsForChange = function(fn) {
     });
 }
 
+Problem.getMyRequests = function(id, fn) {
+    Problem.findAll({
+        include : [
+            {
+                model : User, as : 'user'
+            }
+        ],
+        where : {
+            UserId : id
+        }
+    })
+    .then(problem => {
+        return fn('yes', Responses.OK(problem));
+    })
+    .catch(error => {
+        return fn(null, Responses.NOK(error.message));
+    });
+}
+
 Activity.getActivites = function(problemId, fn) {
     Activity.findAll({
         include : [
@@ -235,11 +294,66 @@ Activity.getActivites = function(problemId, fn) {
     })
     .catch(error => {
         return fn(null, Responses.NOK(error.message));
+    });    
+}
+Change.getChange = function(id, fn) {
+    Change.findOne({
+        include : [
+            {
+                model : User, as : 'user'
+            }
+        ],
+        where : {
+            id : id
+        }
+    })
+    .then(change => {
+        return fn('yes', Responses.OK(change));
+    })
+    .catch(error => {
+        return fn(null, Responses.NOK(error.message));
+    });
+}
+Change.getChangeBoard = function(fn) {
+    Change.findAll({
+        include : [
+           {
+               model : User, as : 'user'
+           }
+        ],
+        where : {
+            dodijeliOdboru : true 
+        }
+    })
+    .then(changes => {
+        return fn('yes', Responses.OK(changes));
+    })
+    .catch(error => {
+        return fn(null, Responses.NOK(error.message));
+    });
+}
+
+Change.getChangeForTech = function(fn) {
+    Change.findAll({
+        include : [
+           {
+               model : User, as : 'user'
+           }
+        ],
+        where : {
+            dodijeliTehnicaru : true 
+        }
+    })
+    .then(changes => {
+        return fn('yes', Responses.OK(changes));
+    })
+    .catch(error => {
+        return fn(null, Responses.NOK(error.message));
     });
 }
 
 db.sync();
 
 module.exports = function(db, DataType) {
-    return {Activity, Group, Log, Problem, Solution, User};
+    return {Activity, Group, Change, Log, Problem, Solution, User};
 }

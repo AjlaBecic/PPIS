@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Problem } from 'src/app/models/problem';
 import { RequestService } from 'src/app/services/request.service';
 import { User } from 'src/app/models/user';
@@ -11,14 +11,16 @@ import { first } from 'rxjs/operators';
   templateUrl: './documentation.component.html',
   styleUrls: ['./documentation.component.css']
 })
+
 export class DocumentationComponent implements OnInit {
+  @Input() id: number;
   private currentProblem : Problem;
   private currentUser : User;
   constructor(
     private requestService : RequestService,
     private userService : UserService,
     private route : ActivatedRoute
-  ) { 
+  ) {
     this.userService.currentUser.subscribe(x => this.currentUser = x);
   }
 
@@ -31,12 +33,13 @@ export class DocumentationComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
-    this.getDocumentation(this.route.snapshot.paramMap.get('id'));
+  getCurrentProblem(): Problem {
+    return this.currentProblem;
   }
 
-  save() {
-    
+  ngOnInit() {
+    this.getDocumentation(this.id);
   }
+
 
 }

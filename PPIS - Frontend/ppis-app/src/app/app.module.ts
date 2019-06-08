@@ -28,6 +28,16 @@ import { NewactivityComponent } from './components/activities/newactivity/newact
 import { AllActivitiesComponent } from './components/activities/all-activities/all-activities.component';
 import { VisualRepresentationComponent } from './components/visual-representation/visual-representation.component';
 
+import { CmanagerhomeComponent } from './components/cmanager/cmanagerhome/cmanagerhome.component';
+import { CmanagerchangeComponent } from './components/cmanager/cmanagerchange/cmanagerchange.component';
+import { CmanagerchangesComponent } from './components/cmanager/cmanagerchanges/cmanagerchanges.component';
+
+import { BoardhomeComponent } from './components/board/boardhome/boardhome.component';
+import { BoardchangesComponent } from './components/board/boardchanges/boardchanges.component';
+import { BoardchangeComponent } from './components/board/boardchange/boardchange.component';
+import { ClientmyrequestsComponent } from './components/clients/clientmyrequests/clientmyrequests.component';
+import { TechnicianChangesComponent } from './components/technician/technician-changes/technician-changes.component';
+
 
 @NgModule({
   declarations: [
@@ -53,7 +63,15 @@ import { VisualRepresentationComponent } from './components/visual-representatio
     TechnicianrequestsComponent,
     TechnicianrequestComponent,
     AllActivitiesComponent,
-    VisualRepresentationComponent
+    VisualRepresentationComponent,
+    CmanagerhomeComponent,
+    CmanagerchangeComponent,
+    CmanagerchangesComponent,
+    BoardhomeComponent,
+    BoardchangesComponent,
+    BoardchangeComponent,
+    ClientmyrequestsComponent,
+    TechnicianChangesComponent
   ],
   imports: [
     BrowserModule,

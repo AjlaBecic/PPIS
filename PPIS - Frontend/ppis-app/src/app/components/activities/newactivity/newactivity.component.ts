@@ -14,17 +14,17 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./newactivity.component.css']
 })
 export class NewactivityComponent implements OnInit {
-  private activityForm : FormGroup;
-  private submitted = false;
-  private problemId : number;
-  private activity : Activity;
-  private currentUser : User;
+  activityForm : FormGroup;
+  submitted = false;
+  problemId : number;
+  activity : Activity;
+  currentUser : User;
   constructor(
     private formBuilder : FormBuilder,
     private route : ActivatedRoute,
     private userService : UserService,
     private activityService : ActivityService
-  ) { 
+  ) {
     this.route.url.subscribe(params => {
       this.problemId = Number.parseInt(this.route.snapshot.paramMap.get('id'));
     });
@@ -53,7 +53,10 @@ export class NewactivityComponent implements OnInit {
     this.activityService.newActivity(this.activity)
     .pipe(first())
     .subscribe(response => {
-      console.log(response); 
+      if(response.statusCode === 200)
+        alert("Activity successfully created!");
+      else
+        alert("Oops... Looks like something bad happend!");
     })
   }
 

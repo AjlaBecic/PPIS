@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -7,14 +7,22 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./activity.component.css']
 })
 export class ActivityComponent implements OnInit {
-  private problemId : number;
+  @Input() id : number;
+  allActivites : Boolean;
+  constructor(private route : ActivatedRoute) {
 
-  constructor(private route : ActivatedRoute) { 
-  
+  }
+
+  onAllActivitiesClick(){
+    this.allActivites = true;
+  }
+
+  onNewActivityClick(){
+    this.allActivites = false;
   }
 
   ngOnInit() {
-    this.problemId = Number.parseInt( this.route.snapshot.paramMap.get('id'));
+    this.allActivites = false;
   }
 
 }
